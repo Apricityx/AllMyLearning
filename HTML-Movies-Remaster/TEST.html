@@ -1,0 +1,68 @@
+<html>
+<head>
+    <script src="jquery.js"></script>
+    <title>Canvas tutorial</title>
+    <style>
+        body{
+            cursor: url(src/img/point.png) 8 8,auto;
+        }
+        #cursor{
+            right: 0;
+            position: absolute;
+            opacity: 0.5;
+            width: 40px;
+            transition: left 50ms linear,top 50ms linear,width 500ms,opacity 500ms;
+            pointer-events:none; /*禁用该鼠标事件*/
+        }
+        iframe{
+
+        }
+    </style>
+</head>
+<body style="background-color: black">
+<button id="button">隐藏1</button>
+<iframe src="./index.html"></iframe>
+
+
+<img alt="" src="src/img/round.svg" id="cursor">
+<br>
+<input id="firstNum">
+<input id="secondNum">
+<input type="submit" onclick="result()">
+<p id="result" style="color:white">11111111111</p>
+</body>
+<script>
+    $(function(){
+        $("#button").click(function(){
+            $("iframe").hide();
+        });
+    });
+</script>
+
+
+<script>
+    var firstNum = 0 //这里要使用var声明，不然setInterval里无法访问该变量
+    var secondNum = 0
+    setInterval(function (){
+        firstNum = document.getElementById('firstNum').value //获取第一个框里的值
+        secondNum = document.getElementById('secondNum').value //获取第二个框里的值
+        
+    },50)
+    function result(){ //定义一个函数，将p标签里的内容设置为两个框里的值的和
+        document.getElementById('result').innerHTML = parseInt(firstNum) + parseInt(secondNum) //parseInt()将字符串转换为数字
+    }
+
+    CursorArea = document
+    window.onload = function (){
+        CursorArea.addEventListener("mousemove", function (event){
+            let cursor = document.getElementById("cursor");
+            let left = event.pageX ;
+            let top = event.pageY;
+            let width = cursor.width / 2;
+            //设置div的偏移量
+            cursor.style.left = left - width + "px";
+            cursor.style.top = top - width + "px";
+        })
+    }
+</script>
+</html>

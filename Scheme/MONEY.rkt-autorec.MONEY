@@ -1,0 +1,8 @@
+#lang sicp
+
+(define money 100)
+(define (withdraw count)
+  (if (< num money)
+      (set! money (- money conunt))
+      (display "余额不足")
+      ))

@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+</head>
+
+<body>
+<h1 align="center">电影网站会员注册</h1>
+<div align="center">
+    <form action="@" method="post">
+        <fieldset style="width: 650px;background: #D092EF"><legend style="color: blue;border: dotted #ECE5E5;background: #E9C516"><em>精彩由此开启</em></legend>
+            <table border="0" align="center">
+                <tr>
+                    <td>姓名</td><td><input name="xm" style="text" maxlength="10"></td>
+                </tr>
+                <tr>
+                    <td>年龄</td><td><input name="nl" type="number" max="120" min="0"></td>
+                </tr>
+                <tr>
+                    <td>性别</td>
+                    <td><input type="radio" name="xb" id="A" value="M"><label for="A">男</label></td>
+                    <td><input type="radio" name="xb" id="B" value="F"><label for="B">女</label></td>
+                </tr>
+                <tr>
+                    <td>联系方式</td><td><input type="tel" maxlength="11"></td>
+                </tr>
+                <tr>
+                    <td>地址</td><td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>您喜爱什么类型的电影？</td>
+                    <td><select name="lx" size="5" multiple><option value="1">动作</option><option value="2">奇幻</option><option value="3">动画</option><option value="4">喜剧</option><option value="5">战争</option><option value="6">恐怖</option><option value="7">悬疑</option><option value="8">爱情</option><option value="9">纪录</option><option value="10">音乐</option><option value="11">科幻</option><option value="12">历史</option></select></td>
+                </tr>
+                <tr>
+                    <td>会员账户</td><td><input type="text" name="zh" required></td>
+                </tr>
+                <tr>
+                    <td>设置密码</td><td><input name="mm" type="password" maxlength="20" minlength="10" required></td><td width="100" colspan="2"   style="color: crimson">(密码应由至少一位大写字母、小写字母、数字和特殊字符组成)</td>
+                </tr>
+                <tr>
+                    <td>会员计划</td>
+                    <td><input type="checkbox" name="jh" value="Z">30元/月</td><td width="180"><input type="checkbox" name="jh" value="Y">78元/季</td><td><input type="checkbox" name="jh" value="X">258元/年</td>
+                </tr>
+            </table></fieldset></form>
+
+</div>
+<input type="submit" value="提交"><input type="submit" value="重置">
+</body>
+</html>

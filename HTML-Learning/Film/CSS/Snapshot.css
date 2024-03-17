@@ -1,0 +1,80 @@
+.button_list
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+.navigation{
+    display: flex;
+    position: fixed;
+    margin:0 0 0 0;
+    top: 0;
+    right:0;
+    width: 100%;
+    height: 7%;
+    background-image:url('./img/nevigation2,.png');
+    border-radius: 5px;
+    background-size: 100% 100%;
+    background-repeat: space;
+}
+.buttons{ /* 按钮div */
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    -webkit-transition-duration: 0.3s;
+}
+.buttons:hover{
+    filter: brightness(1.1);
+    box-shadow: 0 0 5px 1px black;
+}
+.li_ctrl{
+    float:left;
+    padding-top: 10px;
+    padding-left: 50px;
+}
+.description{
+    font-weight: bolder;
+}
+
+.movies{
+    width:100%;
+    height:95%;
+    -webkit-transition-duration: 0.3s;
+    box-shadow: 0 0 15px 5px #000000;
+}
+.test{
+    position:absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+.movies_div{
+    /*margin:0 120px;
+    flex-shrink: 0;*/
+    display:inline-table;
+    vertical-align: top;
+    cursor: pointer;
+    width:240px;
+    height:340px;
+    transition: 0.4s;
+}
+.movies_div:hover{
+    /*margin:0 96px;*/
+    width: 288px;
+    height:400px;
+    transition: 0.4s;
+    font-size: 20px;
+}
+.div_container{
+
+}
+.div_container div {
+    flex: 1;
+    border: 1px solid black;
+    padding: 10px;
+}

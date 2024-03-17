@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #myProgress {
+            width: 100%;
+            background-color: #ddd;
+        }
+
+        #myBar {
+            width: 0%;
+            height: 30px;
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+<h1>鼠标悬停进度条</h1>
+
+<div id="myProgress">
+    <div id="myBar"></div>
+</div>
+
+<script>
+    var elem = document.getElementById("myBar");
+    var width = 0;
+    var id;
+
+    function startProgress() {
+        id = setInterval(frame, 10);
+    }
+
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+            alert("进度条已满！");
+            document.getElementById("myProgress").removeEventListener("mouseover", startProgress);
+        } else {
+            width++;
+            elem.style.width = width + '%';
+        }
+    }
+
+    document.getElementById("myProgress").addEventListener("mouseover", startProgress);
+</script>
+
+</body>
+</html>

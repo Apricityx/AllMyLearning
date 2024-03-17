@@ -1,0 +1,185 @@
+.button_list
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+.navigation{
+    display: flex;
+    position: fixed;
+    margin:0 0 0 0;
+    top: 0;
+    right:0;
+    width: 100%;
+    height: 7%;
+    background-image:url('../img/nevigation2,.webp');
+    border-radius: 5px;
+    background-size: 100% 100%;
+    background-repeat: space;
+}
+.buttons{ /* 按钮div */
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    -webkit-transition-duration: 0.3s;
+}
+.buttons:hover{
+    filter: brightness(1.1);
+    box-shadow: 0 0 5px 1px black;
+}
+.li_ctrl{
+    float:left;
+    padding-top: 10px;
+    padding-left: 50px;
+}
+/*导航栏*/
+
+
+body{
+    padding-top: 50px;
+    background-image: url("../img/moviebg_edited.webp");
+    background-size: 30%;
+    background-repeat: repeat;
+    height: 2000px;
+}
+.body {
+    /*疑问：style中的算是CSS代码吗 是*/
+    margin: 0 0 0 0;
+    height: 2000px;
+}
+/*祖传CSS样式*/
+.main_container{
+    height: 2000px;
+    margin-top:50px;
+    backdrop-filter: blur(1px);
+    box-shadow: 0 0 10px 1px #ffffff;
+    border: 1px solid black;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.left{
+    float:left;
+    width:30%;
+    margin-left: 2%;
+    animation-name: from_left;
+    animation-duration: 1s;
+    z-index: 0;
+}
+
+.right{
+    width:63%;
+    float:right;
+    margin-right: 2%;
+    animation-name: from_right;
+    animation-duration: 1.2s;
+    z-index: 1;
+}
+
+.movie_cover{
+    height: fit-content;
+    width: 80%;
+    margin: 50px auto auto auto;;
+}
+
+.movie_cover img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+
+@keyframes from_left {
+    from {
+        margin-top: -20%;
+        width: 30%;
+        opacity: 0;
+    }
+
+    to {
+        width:30%;
+        opacity: 1;
+        margin-left: 2%;
+    }
+}
+
+@keyframes from_right {
+    0%{
+        visibility:hidden;
+        opacity: 0;
+        margin-top: -20%;
+        width: 63%;
+    }
+
+    17%{
+        opacity: 0;
+        margin-top: -20%;
+        width: 63%;
+    }
+    to {
+        opacity: 1;
+        display: block;
+        width:63%;
+        margin-right: 2%;
+    }
+}
+
+.description{
+    color: yellow;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.description_details{
+    margin-left: 2%;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.member{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.member_img{
+    box-shadow: 0 0 20px 1px black;
+    border-radius: 3%;
+    overflow: hidden;
+    width: 25%;
+}
+
+.plot{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.text_container{
+    height: auto;
+    display: inline;
+    vertical-align:top;
+    width: 55%;
+    position: absolute;
+    overflow: hidden
+}
+
+iframe{
+    display: flex;
+    position: fixed;
+    margin:0 0 0 0;
+    top: 0;
+    right:0;
+    width: 100%;
+    height: 7vh;
+    border-radius: 5px;
+    z-index: 999;
+    background-image:url('../img/nevigation2,.webp');
+    background-repeat: space;
+    background-size: 100% 100%;
+}

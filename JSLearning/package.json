@@ -1,0 +1,8 @@
+{
+  "name": "JSLearning",
+  "version": "1.0.0",
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "dingtalk-jsapi": "^3.0.29"
+  }
+}

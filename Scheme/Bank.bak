@@ -1,0 +1,22 @@
+#lang sicp
+(define (withdraw-pureFunc initial behaviors)
+(define (calculate behav)
+  (let ( (a ( if ( not (null? behav))
+                 (calculate (cdr behav))
+                 initial)))
+    (cond ((null? behav) initial)
+          ((eq? (caar behav) 'deposit)
+           (if (> a 0)
+               (+ (cadar behav) a)
+               -1))
+          ( else
+            (if (>(- a (cadar behav)) 0)
+                (- a (cadar behav))
+                -1)))))
+(calculate behaviors))
+
+(define behaviors1 (list (list 'withdraw 30) (list 'deposit 80) (list 'withdraw 60)))
+(withdraw-pureFunc 100 behaviors1)
+
+(define behaviors2 (list (list 'withdraw 40) (list 'deposit 40) (list 'withdraw 60)))
+(withdraw-pureFunc 80 behaviors2)

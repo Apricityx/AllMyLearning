@@ -1,0 +1,29 @@
+body{
+    background-color: rgba(255, 255, 255, 0);
+}
+.description{
+    color: whitesmoke;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.block{
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.27);
+    border-radius: 15px;
+    width: 100%;
+}
+
+.who{
+    box-shadow: 0 0 10px 1px rgba(0,0,0,0.75);
+    width: 20vw;
+    border-radius: 15px;
+    margin-top: 2vw;
+    transition-duration: 0.2s;
+}
+
+.who:hover{
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.75);
+    transition-duration: 0.2s;
+    width: 25vw;
+}

@@ -1,0 +1,18 @@
+body{
+    background-color: black;
+    height: fit-content;
+    width: fit-content;
+    overflow: hidden;
+    margin: 0;
+}
+#moviesContainers{
+    display: none;
+    overflow: hidden;
+    height: fit-content;
+    cursor:pointer;
+}
+
+.moviesDefault{
+    height: 100vh;
+    width: auto;
+}

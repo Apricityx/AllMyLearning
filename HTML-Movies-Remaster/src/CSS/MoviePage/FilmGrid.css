@@ -1,0 +1,16 @@
+#MainContainer{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    height: 1000px;
+}
+
+#left{
+    border: 2px black solid;
+    margin-right: 2vw;
+}
+
+#right {
+    border: 2px black solid;
+}
+
+

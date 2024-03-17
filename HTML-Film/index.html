@@ -1,0 +1,156 @@
+<!--
+                             _ooOoo_
+                            o8888888o
+                            88" . "88
+                            (| -_- |)
+                            O\  =  /O
+                         ____/`---'\____
+                       .'  \\|     |//  `.
+                      /  \\|||  :  |||//  \
+                     /  _||||| -:- |||||-  \
+                     |   | \\\  -  /// |   |
+                     | \_|  ''\---/''  |   |
+                     \  .-\__  `-`  ___/-. /
+                   ___`. .'  /--.--\  `. . __
+                ."" '<  `.___\_<|>_/___.'  >'"".
+               | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+               \  \ `-.   \_ __\ /__ _/   .-` /  /
+          ======`-.____`-.___\_____/___.-`____.-'======
+                             `=---='
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     赛博佛祖        保佑我CSS永不抽风
+
+todo:将列表换为表格
+-->
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <script src="instantclick.min.js"></script>
+    <script type="text/javascript">
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            alert("使用电脑以获得最佳体验\n\nUse PC for best experience");
+        }
+    </script>
+    <link rel="stylesheet" href="CSS/MainPage.css">
+    <meta charset="UTF-8">
+    <title>影城 dev</title>
+</head>
+<body>
+<img src="./img/logo2.webp" alt="logo" width="90px" height="90px" style="position: fixed;padding-left: 1vw;top:0.5vh;z-index: 1000">
+<iframe src="Navigation.html" frameborder="0" id="Navigation" scrolling="no"></iframe>
+<div id="overlay"></div>
+<div class="body" style="background-color: rgba(45,45,45,0.2);">
+    <br><br>
+    <img id='title' src="./img/title.webp" style="transition-timing-function: cubic-bezier(.73,-0.09,.89,.76);transition: opacity 0.8s;clear: both;display: block;margin: auto auto 30px auto;padding: 20px 200px 20px 200px ;background-color: rgba(255,255,255,0.3);border-radius: 15px;" alt>
+    <hr style="background-color:black; height:2px; border:none;">;
+    <br><br><br><br>
+    <div class="main">
+        <div class="div_container" style="z-index: 3">
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='FILMS/SAO.html'">
+                    <img class="movies target" src="./img/SAO.webp" alt>
+                    <p class="description" style="text-align: center">刀剑神域:黯淡黄昏的谐谑曲</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='FILMS/HP.html'">
+                    <img class="movies" src="./img/HP.webp" alt>
+                    <p class="description" style="text-align: center">哈利波特与火焰杯</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='FILMS/Wandering Earth.html'">
+                    <img class="movies" src="./img/wandering earth.webp" alt>
+                    <p class="description" style="text-align: center">流浪地球 II</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='FILMS/bullet.html'">
+                    <img class="movies" src="./img/bullets.webp" alt>
+                    <p class="description" style="text-align: center">让子弹飞</p>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+        <div class="div_container" style="animation: container2 1s;margin-top: 100px;z-index: 2">
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='404.html'">
+                    <img class="movies" src="./img/weather.webp" alt>
+                    <p class="description" style="text-align: center">天气之子</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='404.html'">
+                    <img class="movies" src="./img/TENT.webp" alt>
+                    <p class="description" style="text-align: center">信条</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='404.html'">
+                    <img class="movies" src="./img/AC.webp" alt>
+                    <p class="description" style="text-align: center">刺客教条</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var targets = document.getElementsByClassName('movies_div');
+    var overlay = document.getElementById('overlay');
+
+    for (var i = 0; i < targets.length; i++) {
+        targets[i].addEventListener('mouseover', function() {
+            overlay.style.opacity = '1';
+            document.getElementById('title').style.opacity = '0.4';
+            for (var j = 0; j < targets.length; j++) {
+                document.getElementsByClassName('movies_div')[j].style.filter = 'brightness(50%)';
+            }
+            this.style.filter = 'brightness(100%)';
+        });
+        targets[i].addEventListener('mouseout', function() {
+            overlay.style.opacity = '0';
+            document.getElementById('title').style.opacity = '0.8';
+            for (var j = 0; j < targets.length; j++) {
+                document.getElementsByClassName('movies_div')[j].style.filter = 'brightness(100%)';
+            }
+        });
+    }
+</script>
+<script src="instantclick.min.js"></script>
+</body>
+</html>
+
+<!--
+参考资料：
+HTML教程 https://www.w3school.com.cn/
+JS教程：https://www.w3school.com.cn/js/index.asp
+表格生成器： https://tableconvert.com/zh-cn/html-generator
+优雅的方式实现动画延迟： https://mp.weixin.qq.com/s/jLsqLpOap0UqtHENlGdjGw
+高清图源： https://pxhere.com/
+无缝跳转插件：http://instantclick.io/
+豆瓣电影海报： https://movie.douban.com/
+部分设计灵感来源： https://www.swordart-onlineusa.com/
+Bezier曲线在线生成： https://yisibl.github.io/cubic-bezier/
+@keyframes规则： https://www.runoob.com/cssref/css3-pr-animation-keyframes.html
+字体图片生成：https://www.diyiziti.com/
+导航栏图片为Stable Diffusion生成
+
+测试环境：Edge浏览器 118.0.2088.61
+
+HTML tutorial https://www.w3school.com.cn/
+JS tutorial: https://www.w3school.com.cn/js/index.asp
+Table generator: https://tableconvert.com/zh-cn/html-generator
+Elegant way to implement animation delay: https://mp.weixin.qq.com/s/jLsqLpOap0UqtHENlGdjGw
+HD image source: https://pxhere.com/
+Seamless jump plugin: http://instantclick.io/
+Douban movie poster: https://movie.douban.com/
+Some design inspiration from: https://www.swordart-onlineusa.com/
+Bezier curve online generation: https://yisibl.github.io/cubic-bezier/
+@keyframes rule: https://www.runoob.com/cssref/css3-pr-animation-keyframes.html
+Font image generation: https://www.diyiziti.com/
+Navigation bar image generated by Stable Diffusion
+
+Test environment: Edge browser 118.0.2088.61
+-->

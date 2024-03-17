@@ -1,0 +1,126 @@
+<!--
+基本结构
+分割线 <hr>
+<i>斜体 <b>粗体 <u>下划线
+<sub>下标 <sup>上标
+<br />换行
+<blockquote>缩进
+
+                             _ooOoo_
+                            o8888888o
+                            88" . "88
+                            (| -_- |)
+                            O\  =  /O
+                         ____/`---'\____
+                       .'  \\|     |//  `.
+                      /  \\|||  :  |||//  \
+                     /  _||||| -:- |||||-  \
+                     |   | \\\  -  /// |   |
+                     | \_|  ''\---/''  |   |
+                     \  .-\__  `-`  ___/-. /
+                   ___`. .'  /--.--\  `. . __
+                ."" '<  `.___\_<|>_/___.'  >'"".
+               | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+               \  \ `-.   \_ __\ /__ _/   .-` /  /
+          ======`-.____`-.___\_____/___.-`____.-'======
+                             `=---='
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     赛博佛祖        保佑我CSS永不抽风
+-->
+<html lang="zh_CN">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"> <!-- 设置编码 -->
+    <title>Hello world</title>
+
+    <!-- <style>中body代表什么？代表body的默认属性-->
+    <style>
+        hr {border-color: #888888} /*格式化分割线颜色*/
+        p {font-size: 20px;text-align:left;text-indent: 40px;} /*<p>默认样式*/
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body {
+            /*控制背景图片与body中内容位置 疑问：style中的算是CSS代码吗*/
+            background-image: url("./bg3.jpg");
+            background-size: cover;
+            border-radius: 25px; /* CSS3的圆角属性 */
+            backdrop-filter: blur(20px); /* CSS的注释方式不同 */
+            margin: 4% 10% 10% 10%;
+            box-shadow: 1px 1px 5px 5px #000000
+        }
+    </style>
+</head>
+<body>
+<br />
+<h1 style="text-align:center">练习2</h1> <!-- <h>代表一个标题 使用style居中，废弃老旧的居中方式align = center -->
+<!--第二题==========================================================================================================-->
+<hr> <!-- 分割线 -->
+
+<!--这两段的属性重复了，是否有方法可以简化？可以，丢head中的样式里就行了-->
+<p><b>2.段落，字体，标记应用</b></p> <!-- 两个属性间用分号分割
+
+
+\
+，缩进:text-indent -->
+<p style="text-indent: 20px;color: darkred;margin: 2% 7%;"><b>网页的本质就是超级文本标记语言，通过结合使用其他的Web技术（如：脚本语言、公共网关接口、组件等），可以创造出功能强大的网页。</b></p>
+
+<hr>
+<!--第三题==========================================================================================================-->
+<p ><b>3.文本标记应用</b></p> <!-- 两个属性间用分号分割 ，缩进:text-indent -->
+<!--上下标-->
+<p style="font-size: 15px;text-indent: 80px;">2X<sup>2</sup>+3X=9</p>
+<p style="font-size: 15px;text-indent: 80px;">X<sub>1</sub>+X<sub>2</sub>=1</p>
+<p style="text-indent: 70px"><i>重庆市北碚区西南大学</i></p>
+<hr>
+<!--第四题==========================================================================================================-->
+<p><b>4.其它排版标记应用 </b></p>
+<p style="text-align: center">《春思》</p>
+<p style="text-align: center">作者：杜甫</p>
+<p style="text-align: center">燕草如碧丝，秦桑低绿枝。</p>
+<p style="text-align: center">当君怀归日，是妾断肠时。</p>
+<p style="text-align: center">春风不相识，何事入罗帏。</p>
+<p style="margin: 2% 10%;">【评析】:这是一首描写思妇心绪的诗。开头两句以相隔遥远的燕秦春天景物 起兴，写独处 秦地的思妇触景生情，终日思念远在燕地卫戍的夫君，盼望他早日归来。三、四句由 开头两句生发而来，继续写燕草方碧，夫君必定思归怀己，此时秦桑已低，妾已断 肠，进一层表达了思妇之情。五、六两句，以 春风掀动罗帏时，思妇的心理活动，来表现她对爱情坚贞不二的高尚情操。</p>
+<!--使用margin属性控制段落间距-->
+<hr>
+
+
+<!--第五题==========================================================================================================-->
+<p><b>项目2  设计新闻访问列表</b></p> <!-- 两个属性间用分号分割 ，缩进:text-indent -->
+
+<!--为何在div中换行<br />无效？-->
+<div style="text-align:center;">
+    <a href="./program2.html" style="font-size: 30px;color: #7b7bff">用无序列表实现新闻版块效果</a>
+    <br />
+    <!--<a href="./list.html" style="font-size: 30px;color: blue">用无序列表实现新闻版块效果</a> -->
+</div>
+
+<p><b>项目3  设计制度宣传展板</b></p>
+
+<div style="text-align:center;">
+    <a href="./program3.html" style="font-size: 30px;color: #7b7bff">制度宣传展板</a>
+    <br />
+</div>
+
+<p><b>项目4  制作饭店菜单价目表</b></p>
+
+<div style="text-align:center;">
+    <a href="./program4.html" style="font-size: 30px;color: #7b7bff">绿晶饭店菜单价目表</a>
+    <br />
+</div>
+
+<p><b>课外拓展2</b></p>
+
+<div style="text-align:center;">
+    <a href="./extra2.html"style="font-size: 30px;color: #7b7bff">食品安全管理制度</a>
+    <br />
+</div>
+<br />
+<br />
+<br />
+</body>
+</html>
+

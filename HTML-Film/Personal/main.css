@@ -1,0 +1,29 @@
+body{
+ margin: 0;
+ border: 0;
+ background-color: #000000;
+ background-image: url("../img/moviebg_edited.webp");
+ background-size: 30%;
+ background-repeat: repeat;
+}
+
+.main_body{
+ border-radius: 15px;
+ width: 70%;
+ height: 1000px;
+ border: 0;
+ float: right;
+ margin-right: 7vw;
+ margin-left: 7vw;
+ box-shadow: white  0 0 0;
+}
+
+.abutton{
+ text-decoration:none;
+ width: fit-content;
+}
+
+.img{
+
+}
+

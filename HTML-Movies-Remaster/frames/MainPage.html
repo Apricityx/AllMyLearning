@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @import url("/src/CSS/MainPage/Movies.css");
+        @import url("/src/CSS/MainPage/GridContainer.css");
+    </style>
+</head>
+<body>
+    <div id="fatherContainer">
+        <div class="child">
+            <img src="../src/img/bullets.webp" alt="MOVIE" class="moviesDefault" onclick="window.parent.JumpToWindow('frames/Movies/bullet.html')">
+<!--            <div id="sideDescription"><p>让子弹飞</p></div>-->
+        </div>
+        <div class="child"><img src="../src/img/HP.webp" alt="MOVIE" class="moviesDefault" onclick="window.parent.JumpToWindow('frames/Movies/HP.html')"></div>
+        <div class="child"><img src="../src/img/SAO.webp" alt="MOVIE" class="moviesDefault" onclick="window.parent.JumpToWindow('frames/Movies/SAO.html')"></div>
+        <div class="child"><img src="../src/img/wandering%20earth.webp" alt="MOVIE" class="moviesDefault" onclick="window.parent.JumpToWindow('frames/Movies/Wandering Earth.html')"></div>
+        <div class="child"><img src="../src/img/weather.webp" alt="MOVIE" class="moviesDefault"></div>
+        <div class="child"><img src="../src/img/AC.webp" alt="MOVIE" class="moviesDefault"></div>
+        <div class="child lastOne"><img src="../src/img/TENT.webp" alt="MOVIE" class="moviesDefault"></div>
+    </div>
+
+    <div id="moviesContainers">
+
+    </div>
+<script>
+    let eles = document.getElementsByClassName('child')
+    let length = eles.length
+    let thisEle;
+    for (let i=0;i<length;i++) {
+        thisEle = eles[i]
+        thisEle.addEventListener("animationend",function (){
+            console.log('尝试取消动画');
+            this.style.animation = '';
+        })
+        thisEle.onmouseover = function (){
+            this.style.width = '45vw'
+            this.style.filter = 'brightness(100%)'
+            for (let j=0;j<length;j++){
+                if (j!==i){
+                    eles[j].style.width = '9.1vw'
+                    eles[j].style.filter = 'brightness(40%)'
+                }
+            }
+        }
+    }
+    function KillWindow(){
+        console.log("尝试杀死该窗口")
+        let eles = document.getElementsByClassName('child')
+        let length = eles.length
+        for (let i=0;i<length;i++){
+            eles[i].style.animation = 'moviesKill 0.3s'
+        }
+    }
+</script>
+</body>
+</html>

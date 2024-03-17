@@ -1,0 +1,8 @@
+#lang sicp
+(define (adjoin-set num set)
+(if (< num (car (cdr set)))
+    
+    )
+  )
+
+(adjoin-set 16 '(2 23 10 17))

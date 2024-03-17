@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="refresh" content="5; url=index.html">
+    <title>404 Not Found</title>
+    <style>body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,ul,ol,li,dl,dt,dd,pre,form,fieldset,legend,button,input,textarea,th,td,figure
+    {margin:0;padding:0}
+    body,button,input,select,textarea
+    {font-family:-apple-system,Proxima Nova,'Helvetica Neue',Helvetica,'Microsoft YaHei',Arial,sans-serif;font-size:14px;line-height:1.5;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#2f2f2f}*,:after,:before{box-sizing:border-box}
+    .hub-error
+    {width:100%;
+        align-items:center;
+        justify-content:center;
+        position:absolute;
+        padding-top: 15%;
+        background-size:cover;
+        color:#000
+    }
+    .hub-error a{color:#000;text-decoration:none}.hub-error a:hover{text-decoration:underline}.hub-tiplicense{text-align:center;margin:auto;color:#000;padding-bottom:20px;max-width:800px;font-size:16px;text-shadow:1px 1px 1px rgba(0,0,0,0.3)}.hub-tiplicense h1{font-size:24px}.hub-errortip-content{text-align:center;font-size:30px;padding:20px 0}.hub-errortip{font-size:120px;text-align:center;color:#000;animation:flicker 3s infinite;-webkit-animation:flicker 3s infinite;padding:30px 0}#error{position:absolute;top:0;right:0;bottom:0;left:0;z-index:0}@-webkit-keyframes flicker{0%,43%,47%,61%,63%,97%{transform:skew(0deg,0deg);opacity:1}45%{transform:rotateX(60deg) scale(.8) skew(-100deg,60deg);opacity:.3}62%{opacity:.3}100%{transform:skew(60deg,30deg)}}@keyframes flicker{0%,43%,47%,61%,63%,97%{-moz-transform:skew(0deg,0deg);transform:skew(0deg,0deg);opacity:1}45%{-moz-transform:rotateX(60deg) scale(.8) skew(-100deg,60deg);transform:rotateX(60deg) scale(.8) skew(-100deg,60deg);opacity:.3}62%{opacity:.3}100%{-moz-transform:skew(60deg,30deg);transform:skew(60deg,30deg)}}</style>
+</head>
+<body class="hub">
+<canvas id="error" width="1340" height="945"></canvas>
+<section class="hub-content">
+    <div class="hub-error">
+        <h1 style="text-align: center;font-size: 90px">404</h1>
+        <h1 id="time" style="text-align: center;display: flow;font-size: 70px">5</h1> <h1 style="display: flow;text-align: center;font-size: 50px">即将跳转至首页</h1>
+    </div>
+</section>
+<script>
+    let i = 5
+    setInterval(function() {
+        i = i - 1;
+        document.getElementById('time').innerHTML = i;
+    }, 1000);
+
+</script>
+
+<script>var ERROR_ANIMATION=function(){function i(){a=document.getElementById("error"),b=a.getContext("2d"),a.width=e=window.innerWidth,a.height=f=window.innerHeight,b.fillRect(0,0,e,f),b.fill(),c=b.getImageData(0,0,e,f),d=c.data,g=setInterval(j,50)}function j(){var a,e;for(a=0;a<d.length;a+=4)e=200*Math.random()+50,d[a]=e,d[a+1]=e,d[a+2]=e;b.putImageData(c,0,0)}return{init:i};var a,b,c,d,e,f,g}();ERROR_ANIMATION.init();</script>
+</body></html>
+
+<!--此网页参考：https://get.pxhere.com/-->

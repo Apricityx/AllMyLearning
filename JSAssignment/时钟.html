@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) 0.1fr 1fr 0.1fr repeat(2, 1fr);
+            height: 98vh;
+        }
+        .main div{
+            justify-items: center;
+            align-items: center;
+            display: grid;
+        }
+
+        .main div p{
+            font-size: 200px;
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+
+        .container{
+            height: fit-content;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body style="background-color: black">
+    <div class="main">
+        <div></div>
+        <div><div class="container"><p id="hour">--</p></div></div>
+        <div><p>:</p></div>
+        <div><p id="minute">--</p></div>
+        <div><p>:</p></div>
+        <div><p id="second">--</p></div>
+        <div></div>
+    </div>
+    <script>
+        function changeTime(){
+            let time = new Date();
+            let hour = time.getHours();
+            let minute = time.getMinutes();
+            let second = time.getSeconds();
+            if (hour<10) hour = '0' + hour;
+            if (minute<10) minute = '0' + minute;
+            if (second<10) second = '0' + second;
+            document.getElementById('hour').innerHTML = hour;
+            document.getElementById('minute').innerHTML = minute;
+            document.getElementById('second').innerHTML = second;
+        }
+        changeTime()
+        setInterval(function (){
+            changeTime()
+        },1000
+        )
+    </script>
+</body>
+</html>

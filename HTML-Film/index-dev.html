@@ -1,0 +1,149 @@
+<!--
+                             _ooOoo_
+                            o8888888o
+                            88" . "88
+                            (| -_- |)
+                            O\  =  /O
+                         ____/`---'\____
+                       .'  \\|     |//  `.
+                      /  \\|||  :  |||//  \
+                     /  _||||| -:- |||||-  \
+                     |   | \\\  -  /// |   |
+                     | \_|  ''\---/''  |   |
+                     \  .-\__  `-`  ___/-. /
+                   ___`. .'  /--.--\  `. . __
+                ."" '<  `.___\_<|>_/___.'  >'"".
+               | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+               \  \ `-.   \_ __\ /__ _/   .-` /  /
+          ======`-.____`-.___\_____/___.-`____.-'======
+                             `=---='
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     赛博佛祖        保佑我CSS永不抽风
+
+todo:将列表换为表格
+-->
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <link rel="stylesheet" href="OLD/CSSNavigation-dev.css">
+    <meta charset="UTF-8">
+    <title>影城 dev</title>
+</head>
+<body>
+<div id="overlay"></div>
+<div class="body" style="background-color: rgba(45,45,45,0.2);">
+    <br><br>
+    <img id='title' src="./img/title.png" style="transition: opacity 0.4s;clear: both;display: block;margin: auto auto 30px auto;padding: 20px 200px 20px 200px ;background-color: rgba(255,255,255,0.3);border-radius: 15px;" alt>
+        <hr style="background-color:black; height:2px; border:none;">;
+    <br><br><br><br>
+    <div class="main">
+        <div class="div_container">
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='SAO.html'">
+                    <img class="movies target" src="./img/SAO.png" alt>
+                    <p class="description" style="text-align: center">刀剑神域:黯淡黄昏的谐谑曲</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='404.html'">
+                    <img class="movies" src="./img/HP.png" alt>
+                    <p class="description" style="text-align: center">哈利波特与火焰杯</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='404.html'">
+                    <img class="movies" src="./img/wandering earth.png" alt>
+                    <p class="description" style="text-align: center">流浪地球 II</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='404.html'">
+                    <img class="movies" src="./img/TENT.png" alt>
+                    <p class="description" style="text-align: center">信条</p>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+        <div class="div_container" style="margin-top: 100px">
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='404.html'">
+                    <img class="movies" src="./img/weather.png" alt>
+                    <p class="description" style="text-align: center">天气之子</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='404.html'">
+                    <img class="movies" src="./img/bullets.png" alt>
+                    <p class="description" style="text-align: center">让子弹飞</p>
+                </div>
+            </div>
+            <div class="movies_div_father">
+                <div class="movies_div" onclick="window.location.href='404.html'">
+                    <img class="movies" src="./img/AC.png" alt>
+                    <p class="description" style="text-align: center">刺客教条</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="body" style="margin-top: 50px ; height: 200px ; background-color: rgba(19,182,224,0.1)">
+    ddd
+</div>
+
+
+
+<!--导航栏-->
+<div class="navigation">
+    <div>
+        <img src="./img/logo2.png" alt="logo" width="80px" height="80px" style="padding-left: 20px">
+    </div>
+
+    <ul class="button_list">
+        <li class="li_ctrl">
+            <div class="buttons" onclick="window.location.href='index.html'">HOME</div>
+        </li>
+        <li class="li_ctrl">
+            <div class="buttons" onclick="window.location.href='404.html'">DEV</div>
+        </li>
+        <li class="li_ctrl">
+            <div></div>
+        </li>
+    </ul>
+</div>
+<!--导航栏-->
+
+<script>
+    var targets = document.getElementsByClassName('movies_div');
+    var overlay = document.getElementById('overlay');
+
+    for (var i = 0; i < targets.length; i++) {
+        targets[i].addEventListener('mouseover', function() {
+            overlay.style.opacity = '1';
+            //将此时的target元素的z-index设为3，使其在最上层
+            this.style.zIndex = '3';
+            overlay.style.zIndex = '1';
+            document.getElementById('title').style.opacity = '0.4';
+            for (var j = 0; j < targets.length; j++) {
+                document.getElementsByClassName('movies_div')[j].style.filter = 'brightness(50%)';
+            }
+            this.style.filter = 'brightness(100%)';
+        });
+        targets[i].addEventListener('mouseout', function() {
+            overlay.style.opacity = '0';
+            this.style.zIndex = '1';
+            overlay.style.zIndex = '0';
+            document.getElementById('title').style.opacity = '0.8';
+            for (var j = 0; j < targets.length; j++) {
+                document.getElementsByClassName('movies_div')[j].style.filter = 'brightness(100%)';
+            }
+        });
+    }
+</script>
+
+
+
+</body>
+</html>

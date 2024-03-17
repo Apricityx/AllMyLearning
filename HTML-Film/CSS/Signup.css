@@ -1,0 +1,145 @@
+body{
+    background-image: url("../img/car-vintage-modified.webp");
+    background-color: #dddddd;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.Navigation{
+    display: flex;
+    position: fixed;
+    margin:0 0 0 0;
+    top: 0;
+    right:0;
+    width: 100%;
+    height: 7vh;
+    border-radius: 5px;
+    z-index: 999;
+    background-image:url('../img/nevigation2,.webp');
+    background-repeat: space;
+    background-size: 100% 100%;
+}
+.main{
+    margin: auto auto auto auto;
+    height: 70vh;
+    width: 50vw;
+    box-shadow: 0 0 5px 1px black;
+    border-radius: 15px;
+}
+
+.input_container{
+    margin:2vh auto auto auto;
+    width: fit-content;
+}
+
+input{
+    width: 20vw;
+    margin:auto;
+    height: 3vw;
+    border:none;
+    text-align: center;
+    transition-duration: 0.5s;
+    border-radius: 10px;
+    background-color: rgba(117, 117, 117, 0.5);
+    box-shadow: 0 0 2px 1px white;
+    display: inline;
+    color: white;
+    outline: none;
+}
+
+input:hover{
+    font-size: 30px;
+    width: 25vw;
+    margin:auto;
+    height: 5vw;
+    transition-duration: 0.5s;
+    box-shadow: none;
+    outline: none;
+    text-align: center;
+    border:white;
+}
+
+input:focus {
+    transition-duration: 1s;
+}
+.icon{
+    width: 35px;
+    display: inline;
+    padding: -1vw;
+    vertical-align: top;
+}
+
+input::placeholder{
+    color:white;
+}
+
+.checkbox{
+    background-color: #4CAF50;
+    width: 20vw;
+    margin:auto;
+    height: 3vw;
+    border:none;
+    text-align: center;
+    transition-duration: 0.5s;
+    border-radius: 10px;
+    background-color: rgba(117, 117, 117, 0.5);
+    box-shadow: 0 0 2px 1px white;
+    display: inline;
+    color: white;
+    outline: none;
+}
+
+.checkbox {
+    position: relative;
+    transition-duration: 0.3s;
+}
+
+.checkbox::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(122, 122, 122, 0.5);
+    opacity: 0;
+    transition-duration: 0.3s;
+}
+
+.checkbox:hover::before {
+    opacity: 1;
+    transition-duration: 0.5s;
+}
+.checkbox_text{
+    font-size: 1.5vw;
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+#button{
+    font-size: 1.5vw;
+    width: 15vw;
+    height: 3vw;
+    border:none;
+    text-align: center;
+    transition-duration: 0.5s;
+    border-radius: 10px;
+    background-color: rgba(117, 117, 117, 0.5);
+    box-shadow: 0 0 2px 1px white;
+    display: inline;
+    color: white;
+    outline: none;
+}
+
+#button:hover{
+    font-size: 1.7vw;
+    width: 15.1vw;
+    margin:auto;
+    height: 3.1vw;
+    transition-duration: 0.5s;
+    box-shadow: none;
+    outline: none;
+    text-align: center;
+    border:white;
+    background-color: rgba(44, 44, 44, 0.5);
+}

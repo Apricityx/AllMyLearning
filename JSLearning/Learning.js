@@ -1,0 +1,83 @@
+//异步请求地址
+const CryptoJS = require("crypto-js");
+const dd = require("dingtalk-jsapi"); // 钉钉JSAPI
+async function get_position () {
+    let result = await fetch ("https://oapi.dingtalk.com/gettoken?appkey=dingid5ztnbz5nf1tnc9&appsecret=Y5NHc0wY9GDTrXRAoh4tv17BY4neRWGtqEftMbgLzcNJnFofULC0A2lSYijURCUt")
+        .then ((response) => response.json ())
+        .then ((data) => data);
+    let access_token = result.access_token
+    console.log ('access_token为' + access_token);
+    result = await fetch ("https://oapi.dingtalk.com/get_jsapi_ticket?access_token=" + access_token)
+        .then ((response) => response.json ())
+        .then ((data) => data);
+    let ticket = result.ticket;
+    console.log ('ticket为' + ticket);
+    function getJsApiSingnature(ticket, nonce, timeStamp, url) {
+        let plainTex = "jsapi_ticket=" + ticket + "&noncestr=" + nonce + "&timestamp=" + timeStamp + "&url=" + url;
+        return CryptoJS.SHA1(plainTex).toString();
+    }
+    let timeStamp = Math.floor(Date.now() / 1000);
+    let nonce = Math.random().toString(36).substr(2, 15);
+    let url = '127.0.0.1'
+    let signature = getJsApiSingnature(ticket, nonce, timeStamp, url);
+    console.log ('signature为' + signature);
+
+    var jsApiList = [
+        'biz.user.get',
+        'device.geolocation.get',
+        'biz.util.uploadImage'
+    ];
+    dd.config({
+        agentId: '2805668558', // 必填，微应用ID
+        corpId: 'dingb34298e0e5aea0e2a1320dcb25e91351',//必填，企业ID
+        timeStamp: timeStamp, // 必填，生成签名的时间戳
+        nonceStr: nonce, // 必填，生成签名的随机串
+        signature: signature, // 必填，签名
+        jsApiList: jsApiList // 必填，需要使用的jsapi列表
+    });
+    dd.error(function(err) {
+        console.log('dd error: ' + JSON.stringify(err));
+    });
+
+    //地图
+    dd.ready(() => {
+        dd.device.geolocation.get({
+            targetAccuracy: 200,
+            coordinate: 1,
+            withReGeocode: false,
+            useCache: true, //默认是true，如果需要频繁获取地理位置，请设置false,
+            onSuccess: result => {
+                /* 高德坐标 result 结构
+                    {
+                        longitude : Number,
+                        latitude : Number,
+                        accuracy : Number,
+                        address : String,
+                        province : String,
+                        city : String,
+                        district : String,
+                        road : String,
+                        netType : String,
+                        operatorType : String,
+                        errorMessage : String,
+                        errorCode : Number,
+                        isWifiEnabled : Boolean,
+                        isGpsEnabled : Boolean,
+                        isFromMock : Boolean,
+                        provider : wifi|lbs|gps,
+                        accuracy : Number,
+                        isMobileEnabled : Boolean
+                    }
+                    */
+                console.log(result)
+                alert("success: " + JSON.stringify(result))
+                document.getElementById("location").innerHTML = "当前位置:" + result.longitude + "," + result.latitude
+            },
+            onFail: err => {
+                console.log(err)
+                alert("error: " + JSON.stringify(err))
+            }
+        });
+    });
+}
+get_position()

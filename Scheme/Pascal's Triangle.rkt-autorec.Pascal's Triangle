@@ -1,0 +1,24 @@
+#lang sicp
+(define (mutiplicationN num n)
+(define (process num n result)
+(if (= n 0)
+    result
+    (process (- num 1) (- n 1) (* num result))
+  ))
+(process num n 1)
+  )
+(define (combination top down) (/ (mutiplicationN down top) (mutiplicationN top top)))
+
+(define (level n)
+  (define (process row col) ;row行col列
+  (if (= col 0)
+      (write-char #\space)
+      (begin
+        (display (combination (- col 1) (- row 1)))
+        (write-char #\space) ;输出空格
+        (process row (- col 1))
+        )))
+  (process (+ n 1) (+ 1 n))
+  )
+
+(level 5)

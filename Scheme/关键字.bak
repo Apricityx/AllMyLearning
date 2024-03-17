@@ -1,0 +1,19 @@
+#lang sicp
+(if (= (- 0.5 0.2) (+ 0.1 0.2))
+1
+2
+    )
+
+
+;cons 构造序对
+;car 输出序对第一个数字
+;cdr 输出序对第二个数字
+;newline过程换行
+
+
+(define c (cons 1 2))
+(display c)
+(newline)
+(cons c c)
+(newline)
+(cdr c)

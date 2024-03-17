@@ -1,0 +1,9 @@
+#lang sicp
+(define (adjoin-set num set)
+(if (< num (car (cdr set)))
+    (cons set num)
+    (cons (car set) adjoin-set num (cdr set)))
+    )
+  )
+
+(adjoin-set 16 '(2 5 10 17))

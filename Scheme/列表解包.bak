@@ -1,0 +1,31 @@
+#lang sicp
+
+;创建列表
+
+(define list1 (cons 1 (cons 2 99999)))
+list1
+
+
+
+(define (length items)
+(if (null? items)
+0
+(+ 1 (length (cdr items)))
+    )
+  )
+
+
+(define (unpacking items2 counter times)
+  (if (< counter times)
+      (unpacking (cdr items2) (+ counter 1) times)
+      items2
+  )
+)
+
+
+(define (unpack items times)
+  (if (< (length list1) times)
+      -1
+      (unpacking items times times)
+  )
+)

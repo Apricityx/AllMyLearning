@@ -1,0 +1,56 @@
+.Navigation{
+    margin-top: 10vh;
+    background-color: rgba(255, 255, 255, 0.48);
+    overflow: hidden;
+    position: fixed;
+    width: 15vw;
+    height: fit-content;
+    border-radius: 15px;
+    z-index: 1;
+    transition-duration: 0.5s;
+    margin-left: 1vw;
+}
+
+/*
+.Navigation:hover{
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 15vw;
+    height: 105%;
+    z-index: 1;
+    margin-top: 0;
+    margin-left: -0.5vw;
+}
+*/
+
+.button{
+    margin: 1vw;
+    height: 5%;
+    width: 60%;
+    color: white;
+    display: flex;
+    background: linear-gradient(to right, transparent 50%, white 50%) 10% 0;
+    background-size: 200%;
+    transition: 0.5s;
+    cursor:pointer;
+}
+
+.button:hover{
+    color: black;
+    background-position: -100% 0;
+    transition: 0.5s;
+}
+.description{
+    align-self: center;
+    margin-left: 10%;
+    font-size: 1vw;
+    color: inherit; /*继承父元素*/
+    backdrop-filter: blur(0);'
+    transition-duration: 0.5s;
+}
+.Navigation:hover{
+    backdrop-filter: blur(5px);
+    transition-duration: 0.5s;
+}

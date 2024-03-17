@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            border: 1px solid black;
+        }
+
+        body {
+            height: 98vh;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 1fr 3fr 1fr;
+        }
+
+        #box {
+            background: yellowgreen;
+            white-space: nowrap; /*这一行是必须的*/
+            overflow: hidden; /*这一行是必须的*/
+        }
+        #scroll{
+            display: inline-grid;
+            width: 1000px;
+            height: 200px;
+            grid-template-columns: 1fr 1fr 1fr;
+            top: 15vh;
+            font-size: 50px;
+        }
+        #scroll2{
+            display: inline-grid;
+            width: 1000px; /*必须满足滚动元素宽度大于滚动窗口*/
+            height: 200px;
+            grid-template-columns: 1fr 1fr 1fr;
+            top: 15vh;
+            left: 2vw;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div id="box">
+    <div id="scroll">
+        <div style="background-color: chocolate">这是原始的</div>
+        <div style="background-color: hotpink">这是原始的</div>
+        <div style="background-color: aqua">这是原始的</div>
+    </div>
+    <div id="scroll2">
+    </div>
+</div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+<script>
+    let box1 = document.getElementById('scroll');
+    let box2 = document.getElementById('scroll2');
+    let box = document.getElementById('box');
+    let speed = 2
+    // box2.style.display = 'none'
+    box2.innerHTML = box1.innerHTML
+    for (let i = 0; i < 3; i++) {
+        document.getElementById('scroll2').getElementsByTagName('div')[i].innerText = '这是复制的'
+    }
+    setInterval(function () {
+        if (box.scrollLeft >= box1.offsetWidth) {
+            box.scrollLeft = 0
+        }
+        else{
+            box.scrollLeft+=speed
+        }
+    }, 5)
+</script>
+</html>

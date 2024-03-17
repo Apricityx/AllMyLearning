@@ -1,0 +1,15 @@
+#lang sicp
+;高级过程
+(define (sum term a next b)
+(if (> a b)
+    0
+    (+ (term a)
+       (sum term (next a) next b))
+  )
+)
+
+(define (square a)
+(* a a)
+  )
+
+(sum square 1 inc 3)

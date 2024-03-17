@@ -1,0 +1,163 @@
+.main {
+    margin-right: 3%;
+    margin-left: 3%;
+    z-index: 1;
+}
+body{
+    padding-top: 50px;
+    background-image: url("./img/wall.jpg");
+    background-size: cover;
+    height: 1569px;
+    z-index: 1;
+}
+.body {
+    /*疑问：style中的算是CSS代码吗 是*/
+    border-radius: 15px; /* CSS3的圆角属性 */
+    backdrop-filter: blur(5px); /* CSS的注释方式不同 */
+    margin: 0 1% 0 1%;
+    box-shadow: 0 0 10px 1px #000000;
+    height: 2000px;
+    position: relative;
+    z-index: 1;
+}
+.button_list
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    z-index: 1;
+}
+.navigation{
+    display: flex;
+    position: fixed;
+    margin:0 0 0 0;
+    top: 0;
+    right:0;
+    width: 100%;
+    height: 7%;
+    background-image:url('./img/nevigation2,.png');
+    border-radius: 5px;
+    background-size: 100% 100%;
+    background-repeat: space;
+    z-index: 1;
+}
+.buttons{ /* 按钮div */
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    -webkit-transition-duration: 0.3s;
+    z-index: 1;
+}
+.buttons:hover{
+    filter: brightness(1.1);
+    box-shadow: 0 0 5px 1px black;
+    z-index: 1;
+}
+.li_ctrl{
+    float:left;
+    padding-top: 10px;
+    padding-left: 50px;
+    z-index: 1;
+
+}
+.description{
+    font-weight: bolder;
+    z-index: 1;
+}
+
+.movies{
+    width:100%;
+    height:95%;
+    -webkit-transition-duration: 0.3s;
+    box-shadow: 0 0 15px 5px #000000;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+
+.test{
+    position:absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    z-index: 1;
+}
+.movies_div_father{
+    text-align: center
+}
+.movies_div{
+    /*margin:0 120px;
+    flex-shrink: 0;*/
+    /*将宽高都乘以1.35*/
+    display:inline-table;
+    vertical-align: top;
+    cursor: pointer;
+    width: 220px;
+    height:300px;
+    transition: 0.4s;
+    font-size: 17px;
+    z-index: 1;
+}
+
+.movies_div:hover{
+    /*margin:0 96px;*/
+    /*将宽高都乘以1.55*/
+    width: 300px;
+    height: 400px;
+    transition: 0.4s;
+    font-size: 20px;
+    z-index: 1;
+}
+
+.div_container{
+    background-color: rgba(45,45,45,0.5);
+    border-radius: 20px;
+    display: flex;
+    height: 390px;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+.div_container:hover{
+    background-color: rgba(45,45,45,0.5);
+    border-radius: 20px;
+    display: flex;
+    height: 510px;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+.div_container div {
+    flex: 1;
+    /*border: 1px solid black;*/
+    padding: 10px;
+    z-index: 1;
+}
+.title_container{
+    position:relative;
+    width:fit-content;
+    height: 100px;
+    margin:auto;
+    z-index: 1;
+    transition: opacity 0.4s;
+}
+
+#overlay {
+    opacity: 0;
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 0;
+    transition: opacity 0.4s;
+}

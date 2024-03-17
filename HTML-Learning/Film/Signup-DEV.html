@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <script type="text/javascript" src="Navigation.html"></script>
+    <!--从外部引入导航栏的js文件-->
+    <!--参考文章：https://blog.csdn.net/yldmkx/article/details/115313765-->
+    <link rel="stylesheet" href="CSS/Signup.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<img src="./img/logo2.webp" alt="logo" width="90px" height="90px" style="position: fixed;padding-left: 1vw;top:0.5vh;z-index: 1000">
+<iframe class="Navigation" src="Navigation.html" frameborder="0" id="Navigation" scrolling="no"></iframe>
+
+
+<p style="font-size: 50px;font-weight: bold;color: white;padding-top: 10px;text-align: center;margin: 10vh auto 2vh;">注册</p>
+<div class="main">
+    <form>
+    <br>
+
+    <!--注册-->
+    <div class="input_container">
+            <img src="img/user.webp" alt="person" class="icon">
+        <label for="username"></label><input type="text" name="username" id="username" placeholder="请输入用户名">
+    </div>
+
+    <div class="input_container">
+        <img src="img/passwd.webp" alt="person" class="icon">
+        <label for="passwd"></label><input type="password" name="passwd" id="passwd" placeholder="请输入密码" >
+    </div>
+
+    <div class="input_container">
+        <img src="img/passwd.webp" alt="person" class="icon" style="opacity: 0">
+        <label for="passwd2"></label><input type="password" name="passwd" id="passwd2" placeholder="请重复密码" >
+    </div>
+    <br>
+    <hr />
+    <p style="text-align: center;font-size: 2vw">你的电影偏好是</p>
+    <div class="input_container" style="background: rgba(122, 122, 122, 0.4);border-radius: 15px;padding:1.5vh">
+        <img src="img/爱心.webp" alt="person" class="icon">
+        <label for="cb1" class="checkbox_text">动作</label><input class="checkbox" type="checkbox" name="agree" id="cb1" style="width: 20px;height: 20px;margin-right: 10px">
+        <label for="cb2" class="checkbox_text">言情</label><input class="checkbox" type="checkbox" name="agree" id="cb2" style="width: 20px;height: 20px;margin-right: 10px">
+        <label for="cb3" class="checkbox_text">喜剧</label><input class="checkbox" type="checkbox" name="agree" id="cb3" style="width: 20px;height: 20px;margin-right: 10px">
+        <label for="cb4" class="checkbox_text">恐怖</label><input class="checkbox" type="checkbox" name="agree" id="cb4" style="width: 20px;height: 20px;margin-right: 10px">
+    </div>
+    <!--注册-->
+    <br>
+    <hr />
+        <br>
+        <br>
+        <br>
+
+        <div class="input_container" style="margin:auto">
+            <img src="img/passwd.webp" alt="person" class="icon" style="opacity: 0">
+            <input type="button" name="Button" id="button" value="提交" onClick="submit()">
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+</body>
+</html>
+
+
+<!--source of images:https://www.iconfont.cn/-->

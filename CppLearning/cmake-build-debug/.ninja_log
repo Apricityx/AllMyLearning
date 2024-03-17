@@ -1,0 +1,6 @@
+# ninja log v5
+2	333	7319166785459562	CMakeFiles/CppLearning.dir/main.cpp.obj	61324d0b6fda1d83
+15	332	7319166646597637	CMakeFiles/CppLearning.dir/Clock.cpp.obj	a6289c95208120f3
+334	430	7319166786401880	CppLearning.exe	be18940fdea1e690
+32	3145	7317606993831400	CMakeFiles/CppLearning.dir/animals.cpp.obj	c92e041b24f1fb1d
+0	803	7319928837184805	build.ninja	4a28a2c1bf4aa1c7

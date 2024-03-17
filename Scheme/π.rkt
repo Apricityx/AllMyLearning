@@ -1,0 +1,15 @@
+#lang sicp
+
+
+(define (counting counter sum times)
+(if (< counter (* times 2))
+    (counting (+ counter 4) (+ sum (/ 1 (* counter (+ counter 2)))) times )
+    (* sum 8)
+  )
+  )
+
+(define (pi-sum b)
+(counting 1 0.0 b)
+  )
+
+(pi-sum 10000000)

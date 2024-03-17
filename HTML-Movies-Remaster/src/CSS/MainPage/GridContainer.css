@@ -1,0 +1,72 @@
+#fatherContainer{
+    display: inline-grid;
+    grid-template-columns: repeat(7, fit-content(100%));
+}
+
+#fatherContainer .child{
+    width: 9.1vw;
+    transition: 0.3s;
+    overflow: hidden;
+    filter: brightness(40%);
+    animation: moviesLoad 0.9s;
+    cursor: pointer;
+}
+
+#fatherContainer .lastOne{
+    width: 45vw;
+    transition: 0.3s;
+    overflow: hidden;
+    filter: brightness(100%);
+}
+/*#fatherContainer .child:hover{*/
+/*    background-color: red;*/
+/*    border: 1px solid black;*/
+/*    width: 30vw;*/
+/*    transition: 0.5s;*/
+/*}*/
+body{
+    cursor: url(/Movies-Remaster/src/img/point.png) 8 8,auto;
+}
+
+@keyframes moviesLoad {
+    0%{
+        margin-left: 20vw;
+        opacity: 0;
+    }
+    50%{
+        margin-left: -1vw;
+        opacity: 1;
+    }
+    100%{
+        margin-right: 0;
+    }
+}
+
+@keyframes moviesKill {
+    0%{
+        opacity: 1;
+        margin-right: 0;
+    }
+    100%{
+        margin-left: -50vw;
+        opacity: 0;
+    }
+}
+
+#sideDescription{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    overflow: hidden;
+    margin: auto;
+    width: fit-content;
+    transform:translateX(0%);
+}
+
+#sideDescription p{
+    color: white;
+    font-size: 100px;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+}

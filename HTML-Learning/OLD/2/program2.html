@@ -1,0 +1,60 @@
+<!--
+基本结构
+分割线 <hr>
+<i>斜体 <b>粗体 <u>下划线
+<sub>下标 <sup>上标
+<br />换行
+<blockquote>缩进
+-->
+<html lang="zh_CN">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"> <!-- 设置编码 -->
+    <title>用无序列表实现新闻版块效果</title>
+
+    <!-- <style>中body代表什么？ -->
+
+    <style>
+        /*祖传CSS*/
+        a{text-decoration: none;font-size: 20px} /*去除超链接下划线*/
+        hr {border-color: #888888} /*格式化分割线颜色*/
+        p {font-size: 20px;text-align:left;text-indent: 40px;} /*<p>默认样式*/
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body {
+            /*控制背景图片与body中内容位置 疑问：style中的算是CSS代码吗*/
+            background-image: url("./bg2.jpg");
+            background-size: cover;
+            border-radius: 25px; /* CSS3的圆角属性 */
+            backdrop-filter: blur(20px); /* CSS的注释方式不同 */
+            margin: 4% 10% 1% 10%;
+            box-shadow: 1px 1px 5px 5px #000000
+        }
+    </style>
+
+
+
+</head>
+<body>
+<br />
+<h1 style="margin: 1% 10% 1% 10%;text-align: center">科研发展</h1>
+<hr>
+<ul>
+        <li style="display: inline">高校咨询</li>
+        <li style="display: inline">科技前沿</li>
+        <li style="display: inline">成果展示</li>
+        <li style="display: inline">学术会议</li>
+    <li><a href="http://stdaily.com/index/kejixinwen/202310/4ec2d23c4477417f926b77b31b535343.shtml" target="_blank">白鹤滩水电站发电量突破1000亿千瓦时</a></li>
+    <li><a href="http://stdaily.com/index/kejixinwen/202310/43d6eb9d99484736a248b61d904cf39f.shtml" target="_blank">第六届进博会最后冲刺 “中欧班列-进博号”满载进博展品到上海</a></li>
+    <li><a href="http://stdaily.com/index/kejixinwen/202310/e0e122bd30dd4709bb907a032a4b5508.shtml" target="_blank">最终命名揭晓 旅韩大熊猫双胞胎宝宝有名字啦</a></li>
+    <li><a href="http://stdaily.com/index/kejixinwen/202310/508df8a4a7a444029425c26b0a262d1e.shtml" target="_blank">创新故事丨替代人体组织接受药物实验——“器官”长在芯片里</a></li>
+    <li><a href="https://www.bilibili.com/video/BV1va411w7aM/" target="_blank">中国首次实现常温超导</a></li>
+</ul> <!--target="_blank"新窗口打开-->
+<a href="./assignment2.html" style="color:red;position: absolute;bottom: 10%;left: 5%"><b>-> Back</b></a>
+<br />
+</body>
+</html>

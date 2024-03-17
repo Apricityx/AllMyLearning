@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"> <!-- 设置编码 -->
+<head>
+    <title>练手</title>
+    <style>
+        /*需要使div块居中*/
+        .block{
+            border-radius: 5px;
+            width: 200px;
+            height: 150px;
+            background-color: rgb(128, 128, 128);
+            text-align: left;
+            text-indent: 20px;
+            margin : 20px;
+            padding:20px;
+        }
+        #description{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="block">
+    <h1>London</h1>
+    <p id="description">A beautiful city</p>
+</div>
+<div class="block">
+    <h1>China</h1>
+</div>
+<!--内联样式-->
+
+<iframe src="1.html"></iframe>
+
+<p id="Hello">请点击按钮</p>
+<button type="button" onclick="document.getElementById('Hello').innerHTML = 'Hello JS!';
+                               document.getElementById('Hello').style.color = 'blue'">点击</button>
+<!--.innerHTML是一个属性，可以获取或替换HTML元素的内容
+.style.color是一个属性，可以获取或替换HTML元素的颜色-->
+
+<button type="button" onclick="document.getElementById('Hello').style.fontSize = '35px'">点击</button>
+
+<button type="button" onclick="document.getElementById('Hello').style.display = 'none'">点击</button>
+<button type="button" onclick="document.getElementById('Hello').style.display = 'block'">点击</button>
+
+
+<!-- script脚本 -->
+
+<script>
+    function first(){
+        document.write("Hello world!");
+    }
+</script>
+
+<!--内部函数与外部函数的调用-->
+<script src="./external_JS.js"></script> <!--引用外部脚本-->
+<button type="button" onclick="first()">内部函数</button>
+<button type="button" onclick="Hello_world()">外部函数</button>
+
+
+<!--变量-->
+<script>
+    //什么是变量提升？为什么用var会导致一些作用域问题？
+
+    const x = 1;
+    const y = 2;
+    function variable(){
+        let z = String(x + y);
+        document.write(z);
+    }
+</script>
+<!---->
+<button type="button" onclick="variable()">变量</button>
+
+<!--调用alert函数来实现弹窗-->
+<button type="button" onclick="alert('Hello world!')">弹窗</button>
+
+<script>
+function fortest() {
+    for (let i=0;i<10;i++)
+    {
+        document.write(String(i));
+        alert(String(i));
+    }
+    document.write('Hello')
+    //write方法只会覆盖原有的内容，不会在原有的内容上添加
+}
+function test2(a,b) {
+    return a*b;
+}
+function test3() {
+    let x = test2(1,2)
+    String(x)
+    document.getElementById('Hello').innerHTML = x;
+}
+</script>
+
+<button type="button" onclick=fortest()>日期</button>
+<button type="button" onclick="document.write()">清屏</button>
+
+<button type="button" onclick="test3()">函数</button>
+
+
+
+
+<!--把脚本置于 <body> 元素的底部，可改善显示速度，因为脚本编译会拖慢显示。-->
+
+</body>
+</html>

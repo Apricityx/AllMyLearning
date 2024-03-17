@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <style>
+        #main {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 1fr 2fr;
+            height: 98vh;
+        }
+
+        #main div {
+        }
+
+        #selectNum {
+            display: grid;
+            grid-template-columns: repeat(4, 12vh);
+            grid-template-rows: repeat(5, 12vh);
+        }
+
+        #selectNum div {
+            border: 1px solid white;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #selectNum div:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+        }
+
+        #selectNum p {
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-size: 50px;
+            user-select: none;
+        }
+
+        #input {
+            font-size: 100px;
+            color: white;
+            user-select: none;
+        }
+    </style>
+</head>
+<body style="background-color: black">
+<div id="main">
+    <div></div>
+    <div style="grid-column-start: 2;grid-column-end: 5;">
+        <p id="input" style="text-align: center"></p>
+    </div>
+    <div></div>
+
+    <div></div>
+    <div></div>
+    <div>
+        <div id="selectNum">
+            <div style="grid-column-start: 1;grid-column-end: 4" onclick="clearALL()"><p>C</p></div>
+            <div onclick="inputNum(this)"><p>+</p></div>
+            <div onclick="inputNum(this)"><p>1</p></div>
+            <div onclick="inputNum(this)"><p>2</p></div>
+            <div onclick="inputNum(this)"><p>3</p></div>
+            <div onclick="inputNum(this)"><p>-</p></div>
+            <div onclick="inputNum(this)"><p>4</p></div>
+            <div onclick="inputNum(this)"><p>5</p></div>
+            <div onclick="inputNum(this)"><p>6</p></div>
+            <div onclick="inputNum(this)"><p>×</p></div>
+            <div onclick="inputNum(this)"><p>7</p></div>
+            <div onclick="inputNum(this)"><p>8</p></div>
+            <div onclick="inputNum(this)"><p>9</p></div>
+            <div onclick="inputNum(this)"><p>÷</p></div>
+            <div onclick="inputNum(this)" style="grid-column-start: 1;grid-column-end: 3"><p>0</p></div>
+            <div onclick="inputNum(this)"><p>.</p></div>
+            <div onclick="result()"><p>=</p></div>
+        </div>
+    </div>
+    <div></div>
+    <div></div>
+</div>
+
+<script>
+    function clearALL() {
+        document.getElementById('input').innerHTML = ''
+    }
+
+    function inputNum(obj) {
+        let symbol = obj.getElementsByTagName('p')[0].innerHTML
+        let originInput = document.getElementById('input').innerHTML
+        if (symbol === '=' || symbol === '÷' || symbol === '×' || symbol === '-' || symbol === '+') {
+            if (originInput !== '') {
+                if (originInput.indexOf('+') === -1 && originInput.indexOf('-') === -1 && originInput.indexOf('×') === -1 && originInput.indexOf('÷') === -1) {
+                    let input = document.getElementById('input').innerHTML
+                    input = input + obj.getElementsByTagName('p')[0].innerHTML
+                    document.getElementById('input').innerHTML = input
+                }
+            }
+        } else {
+            let input = document.getElementById('input').innerHTML
+            input = input + obj.getElementsByTagName('p')[0].innerHTML
+            document.getElementById('input').innerHTML = input
+        }
+    }
+
+    function result() {
+        let input = document.getElementById('input').innerHTML
+        let num1 = ''
+        let num2 = ''
+        let symbol = ''
+        let result = ''
+        for (let i = 0; i < input.length; i++) {
+            if (input[i] === '+' || input[i] === '-' || input[i] === '×' || input[i] === '÷') {
+                symbol = input[i]
+                num1 = input.substring(0, i)
+                num2 = input.substring(i + 1, input.length)
+            }
+        }
+        if (symbol === '+') result = parseFloat(num1) + parseFloat(num2)
+        else if (symbol === '-') result = parseFloat(num1) - parseFloat(num2)
+        else if (symbol === '×') result = parseFloat(num1) * parseFloat(num2)
+        else if (symbol === '÷') result = parseFloat(num1) / parseFloat(num2)
+        document.getElementById('input').innerHTML = input + '=' + result
+    }
+</script>
+</body>
+</html>

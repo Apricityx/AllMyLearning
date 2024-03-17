@@ -1,0 +1,35 @@
+#Navigation{
+    display: grid;
+    grid-template-rows: 4fr 1fr 1fr 1fr 1fr 4fr;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100vh;
+    transition:0.5s;
+}
+
+#Navigation:hover{
+}
+
+.button{
+    color: white;
+    margin: auto;
+    font-weight: bold;
+    font-size: 40px;
+    padding: 10px;
+    transition: 0.5s;
+}
+
+.button:hover{
+    font-size: 50px;
+    color: #e5d276;
+    transition: 0.5s;
+}
+
+#color-sheet{
+    background: linear-gradient(#494949, #000000);
+    height: 100vh;
+    width: 16.67vw;
+    position: fixed;
+    z-index: -1;
+    margin-top: -100vh;
+    transition: 0.4s;
+}

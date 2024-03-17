@@ -1,0 +1,46 @@
+.navigation{
+    display: flex;
+    position: fixed;
+    margin:0 0 0 0;
+    top: 0;
+    right:0;
+    width: 100%;
+    height: 10vh;
+    border-radius: 5px;
+    background-size: 100% 100%;
+    z-index: 999;
+}
+
+.buttons{ /* 按钮div */
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    z-index: 1;
+    padding: 5vh 2vw 5vh 2vw;
+    margin-top: 8vh;
+}
+.buttons:hover{
+    filter: brightness(1.1);
+    box-shadow: 0 0 5px 1px black;
+    z-index: 1;
+}
+.li_ctrl{
+    height: 65vh;
+    float:left;
+    padding-top: 5vh;
+    padding-left: 50px;
+    z-index: 1;
+
+}
+
+.button_list
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    z-index: 1;
+}

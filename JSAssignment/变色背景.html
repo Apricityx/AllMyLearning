@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #main {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            height: 98.5vh;
+
+        }
+
+        #main div {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            width: 20vw;
+            border-radius: 30px;
+            background-color: rgba(0, 0, 0, 0.34);
+            cursor: pointer;
+        }
+
+        .button p {
+            font-size: 50px;
+            color: white;
+            user-select: none;
+        }
+    </style>
+</head>
+<body style="transition-duration: 0.3s">
+<div id="main">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div>
+        <div class="button" id="button1" onclick="startColor(this)"><p style="text-align: center">点击变色</p></div>
+        <div class="button" id="button2" style="display: none" onclick="stopColor(this)"><p style="text-align: center">
+            点击停止</p></div>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<script>
+    function startColor(obj) {
+        obj.style.display = 'none'
+        document.getElementById('button2').style.display = 'block'
+    }
+
+    function stopColor(obj) {
+        obj.style.display = 'none'
+        document.getElementById('button1').style.display = 'block'
+    }
+
+    setInterval(function () {
+        if (document.getElementById('button2').style.display === 'block') {
+            let obj = document.getElementsByTagName('body')[0]
+            let color = '#'
+            for (let i = 0; i < 6; i++) {
+                color += Math.floor(Math.random() * 16).toString(16)
+            }
+            obj.style.backgroundColor = color
+        }
+    }, 300)
+</script>
+</body>
+</html>

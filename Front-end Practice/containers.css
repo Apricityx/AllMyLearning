@@ -1,0 +1,35 @@
+body{
+    margin-top: 0;
+}
+
+.img_container{
+    position: relative;
+    margin: 0 -100px;
+}
+
+.main_list_container{
+    position: absolute;
+    top: 25px;
+    left: 550px;
+    font-size: 20px;
+    color: white;
+}
+
+#main_list .fir_list{
+    padding: 20px 5px;
+    float: left;
+    margin-right: 35px;
+    width: 90px;
+}
+
+#main_list .fir_list:hover{
+    background:linear-gradient(rgba(0, 0, 0, 0),deepskyblue);
+}
+
+.sec_list_container{
+    background-color: red;
+    font-size: 10px;
+}
+.sec_list_container ul{
+    padding-left: 20px;
+}

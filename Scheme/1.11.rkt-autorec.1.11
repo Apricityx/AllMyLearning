@@ -1,0 +1,8 @@
+#lang sicp
+(define (functionF n)
+(if (<= n 3)
+    n
+    (+ (functionF (- n 1)) (* 2 (functionF (- n 2))) ( * 3 (functionF (- n 3))))
+    )
+  )
+(functionF 4)

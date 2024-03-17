@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #Q {
+            background-color: yellow
+        }
+
+        #P {
+            background-color: blue;
+        }
+
+        #P:hover ~ #Q {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p id="P">block1</p>
+    <p id="R">block2</p>
+    <p id="Q">block2</p>
+</div>
+</body>
+</html>
