@@ -26,11 +26,11 @@ int main() {
     system("chcp 65001");
     cout << "Hello, world!" << endl;
     // C中的枚举类型
-    enum color {
-        red, blue = 5, yellow
-    } a;
+//    enum color {
+//        red, blue = 5, yellow
+//    } a;
 //    b = blue;
-    cout << blue << endl;
+//    cout << blue << endl;
     // 枚举类型内的变量在外面也可以使用
 //Cpp中的强制类型转换
     int i;
@@ -112,7 +112,5 @@ int main() {
 //重载运算符
     BombClock C6 = C4 + C5; // 合成新的炸弹
     C6.get_info();
-
-    
     return 0;
 }
