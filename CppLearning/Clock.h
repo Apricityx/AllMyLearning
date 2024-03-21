@@ -39,32 +39,38 @@ private:
     };
 
     string get_time() const {
-//        cout << hour << ":" << minute << ":" << second << endl;
+        //        cout << hour << ":" << minute << ":" << second << endl;
         return to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
     };
-    int hour;
-    int minute;
-    int second;
+    int hour = 0;
+    int minute = 0;
+    int second = 0;
 };
 
 class BombClock : private Clock {
+    //private继承，这代表着Clock的所有public成员在BombClock中都是private的，但BombClock的public成员仍然可以访问
 public:
+    //重载运算符
     BombClock operator+(const BombClock &b) const {
         cout << "已合成新的炸弹" << endl;
-        BombClock new_bomb;
+        BombClock new_bomb = *this;
         new_bomb.self_attr.radius = this->self_attr.radius + b.self_attr.radius;
         return new_bomb;
     }
-    void set_bomb(){
+
+    void set_bomb() {
         set_time_out(self_attr.go_off_counter);
         cout << "Boom!" << endl;
     }
-    void set_radius(int r){
+
+    void set_radius(int r) {
         self_attr.radius = r;
     }
-    void get_info() const{
+
+    void get_info() const {
         cout << "此爆炸半径为" << self_attr.radius << endl;
     }
+
 private:
     struct {
         int radius = 10;
