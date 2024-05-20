@@ -4,7 +4,7 @@
     <title>PHP LEARNING</title>
 </head>
 <body>
-<p id="PC_ID"></p>
+<p id="PC_ID">NULL</p>
 <p id="PC_IP"></p>
 <?php
 $address = '127.0.0.1';
@@ -52,7 +52,23 @@ $username = $_GET['user'] ?? 'nobody';
 echo $username;
 echo "<br>";
 //PHP中的数组
+
 ?>
 
 </body>
+<script>
+    function update_add() {
+        console.log("update");
+        let text_container = document.getElementById("PC_ID");
+        let xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () { //回调函数
+            //若请求成功
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) text_container.innerHTML = xmlhttp.responseText;
+        }
+        xmlhttp.open("GET", "find.php?q=get_address", true);
+        xmlhttp.send();
+    }
+    setInterval(update_add, 1000);
+</script>
+
 </html>

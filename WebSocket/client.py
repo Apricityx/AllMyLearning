@@ -7,7 +7,7 @@ from time import sleep
 url = 'localhost'
 port = 12345
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.connect((url, port))
+server.connect((url, port)) # connect方法用于连接到服务器
 
 
 def re_login(name, passwd):

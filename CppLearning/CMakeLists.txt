@@ -3,6 +3,7 @@ project(CppLearning)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CppLearning main.cpp
-        Clock.cpp
-        Clock.h)
+add_executable(CppLearning
+        main.cpp
+        )
+add_executable(TEST main.cpp)

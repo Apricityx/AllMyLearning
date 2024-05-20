@@ -1,3 +1,4 @@
-D:/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/CppLearning.dir
-D:/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/media/apricityx/Data1/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/CppLearning.dir
+/media/apricityx/Data1/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/TEST.dir
+/media/apricityx/Data1/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/edit_cache.dir
+/media/apricityx/Data1/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/rebuild_cache.dir

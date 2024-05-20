@@ -5,8 +5,23 @@
 #include <string>
 #include <fstream>
 #include <map>
+#include <utility>
+
 using namespace std; // 这一行的意思是使用std命名空间下的所有标识符
 //form CSDN: 这样命名空间std内定义的所有标识符都有效（曝光）。就好像它们被声明为全局变量一样
+class throwError : public exception {
+public:
+    string content = "Undefined";
+
+    explicit throwError(string error) {
+        content = std::move(error);
+    }
+
+    [[nodiscard]] const char *what() const noexcept override {
+        return &content[0];
+    }
+};
+
 class Box {
 public:
     double length; // 盒子的长度
@@ -94,7 +109,7 @@ int main() {
     //读取文件
 
     ifstream file;
-    file.open("../test.txt", ios::out);
+    file.open("../test.txt", ios::in);
     if (!file) cout << "文件打开失败" << endl;
     string file_content, file_content_now;
     while (getline(file, file_content_now))
@@ -106,10 +121,14 @@ int main() {
     ofstream file_write;
     file_write.open("../test.txt", ios::app);
     //将file_content转换为int
-    char last_word = file_content[file_content.length() - 2];
-    int file_content_int = last_word - '0';
-    cout << "写入的内容为" << file_content_int + 1 << endl;
-    file_write << file_content_int + 1;
+    // 写指针向前移动一位
+    file_write.seekp(-1, ios::end);
+    file_write << '1';
+//    char last_word = file_content[file_content.length() - 2];
+//    int file_content_int = last_word - '0';
+//    int file_content_int = 0;
+//    cout << "写入的内容为" << file_content_int + 1 << endl;
+//    file_write << file_content_int + 1;
     file_write.close();
     //定义类
     Clock clock{};
@@ -134,6 +153,13 @@ int main() {
     static int static_i = 10;
     cout << "static变量为" << static_i << endl;
     //static函数
+
+    // 错误处理
+    try {
+        throw throwError("content");
+    } catch (throwError &e) {
+        cout << "错误为" << e.what() << endl;
+    }
 
     return 0;
 }
