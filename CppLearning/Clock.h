@@ -4,7 +4,8 @@
 #include <unistd.h>
 #include <ctime>
 #include <iostream>
-
+// 头文件防卫式声明
+# ifndef CPPLEARNING_CLOCK_H
 #define CPPLEARNING_CLOCK_H
 using namespace std;
 
@@ -77,3 +78,5 @@ private:
         int go_off_counter = 10;
     } self_attr;
 };
+
+# endif //CPPLEARNING_CLOCK_H

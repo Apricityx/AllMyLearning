@@ -7,6 +7,16 @@
 #include <map>
 #include <utility>
 
+int add(int a, int b); // 向前声明，声明有这么个函数但是不给出具体实现，在后续的代码中再对其进行补充
+int gVar = 5;
+namespace space {
+    int a = 1;
+}
+
+int getGlobalVar() {
+    return gVar;
+}
+
 using namespace std; // 这一行的意思是使用std命名空间下的所有标识符
 //form CSDN: 这样命名空间std内定义的所有标识符都有效（曝光）。就好像它们被声明为全局变量一样
 class throwError : public exception {
@@ -160,6 +170,39 @@ int main() {
     } catch (throwError &e) {
         cout << "错误为" << e.what() << endl;
     }
+    // 几种初始化变量的方式
+    int init_var_a(5); // 直接初始化
+    int init_var_b{1}; // 括号初始化
+    // 未定义行为
+    int undefined_var{}; // {}初始化为0
+    cout << "未定义变量为" << undefined_var << endl;
+    cout << add(1, 2) << endl;
+#if 0
+    cout << "这些文字不会被输出到控制台" << endl;
+#endif
+    signed int signed_int = 1;
+// 静态类型转换
+//    signed int 和 int 是一样的
+//    add(1, static_cast<int>(2.2));
+//    int static_cast_int = static_cast<int>(2.2);
+// constexpr关键字
+//    constexpr int constexpr_int{1};
+//    string get_line_var = "";
+//    getline(cin >> ws, get_line_var);
+// ws是一个流控制符，表示忽略前面的空白符，直到遇到第一个非空白符为止
+//    cout << "输入的内容为" << get_line_var << endl; 
+// 只读的访问方式
+    string_view read_only_string_var = "1234";
+    cout << read_only_string_var << endl;
+    read_only_string_var = "1223";
+    cout << read_only_string_var << endl;
+    // space命名空间
+    cout << space::a << endl;
+    cout << &getGlobalVar;
+}
 
-    return 0;
+
+// 向前声明
+int add(int a, int b) {
+    return a + b;
 }
