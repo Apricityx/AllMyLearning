@@ -17,4 +17,5 @@
 ## 选择技术栈：
 
 - 前端：Vue.js
-- 后端：NodeJS Express
+- 后端：NodeJS Express TypeScript
+- 数据库：SQLite
