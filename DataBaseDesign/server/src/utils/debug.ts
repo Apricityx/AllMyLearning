@@ -14,4 +14,8 @@ export class consoleDebug {
     log(message: string): void {
         console.log(`\x1b[36m%s\x1b[0m`, message); // Cyan color
     }
+
+    debug(message: string): void {
+        console.log(`\x1b[35m[Debug]%s\x1b[0m`, message); // Magenta color
+    }
 }

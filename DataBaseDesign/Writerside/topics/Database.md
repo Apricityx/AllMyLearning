@@ -13,6 +13,13 @@ StdInfo TEXT,
 StdPasswd TEXT) 
 ```
 
+#### 示例插入
+
+```SQL
+INSERT INTO StdData(StdName, StdInfo, StdPasswd)
+VALUES('张三', '计算机专业，擅长算法', '123456');
+```
+
 ### TutorData
 
 | TutorID (PK) | TutorName | TutorInfo | TutorPasswd |
@@ -31,6 +38,8 @@ TutorPasswd TEXT)
 | StdID (FK) | TutorID (FK) | AcceptTime |
 |------------|--------------|------------|
 
+#### 创建该表
+
 ```SQL
 CREATE TABLE Accepted(
 StdID INTEGER,
@@ -42,6 +51,11 @@ FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID),
 
 - StdID 引用 StdData 的 StdID
 - TutorID 引用 TutorData 的 TutorID
+
+#### 示例插入
+
+```SQL
+```
 
 ### Application
 
