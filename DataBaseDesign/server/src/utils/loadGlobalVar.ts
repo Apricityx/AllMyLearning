@@ -8,6 +8,7 @@ const file_dict = JSON.parse(file);
 const Configs = {
     "database_name": "system",
     "port" : 3000,
+    "db_access_key": "114514",
     ...file_dict
 };
 // 将配置文件写入至源文件

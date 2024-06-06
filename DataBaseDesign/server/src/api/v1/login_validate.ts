@@ -29,10 +29,21 @@ api.use(bodyParser.json());
 api.use(cors());
 
 api.post('/', (req: Request, res: Response) => {// console.log(req.body)
-    const dataBase64 = req.body.encrypted
-    logger.debug(dataBase64)
-    const dataRSA = forge.util.decode64(dataBase64)
-    const data = forge.pki.privateKeyFromPem(privateKey).decrypt(dataRSA)
-    logger.debug(data)
-    res.send(constructor.success("Success"))
+    const dataBase64: string = req.body.encrypted
+    // logger.conn("BASE64: " + dataBase64)
+    const dataRSA: string = forge.util.decode64(dataBase64)
+    const data: string = forge.pki.privateKeyFromPem(privateKey).decrypt(dataRSA)
+    logger.conn("Login Info " + data)
+    const info = JSON.parse(data)
+    // const result: any = db.prepare("SELECT * FROM StdData WHERE StdID = ? AND StdPasswd = ?").get(info.name, info.password)
+    const result: any = db.prepare("SELECT * FROM StdData WHERE StdID = ? AND StdPasswd = ?").get(info.name, info.password)
+    // 防止注入攻击
+    logger.debug("尝试登录：用户名：" + info.name + " 密码：" + info.password + " 登录类型：" + info.type)
+    if (result === undefined) {
+        res.send(constructor.error("Wrong username or password"))
+        logger.debug("登录失败：用户名：" + info.name + " 密码：" + info.password + " 登录类型：" + info.type)
+        return
+    } else {
+        res.send(constructor.success("Success"))
+    }
 })

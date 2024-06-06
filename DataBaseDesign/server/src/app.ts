@@ -6,6 +6,7 @@ import {consoleDebug} from './utils/debug';
 import {api as v1DangerousResetDatabase} from "./api/v1/dangerous/resetDatabase";
 import {api as v1Ping} from "./api/v1/ping";
 import {api as v1SubmitApplication} from "./api/v1/submit_application";
+import {api as v1LoginVailDate} from "./api/v1/login_validate";
 
 
 // 加载全局配置
@@ -23,6 +24,7 @@ logger.warning('Server started!');
 app.use('/api/v1/dangerous/reset_database', v1DangerousResetDatabase);
 app.use('/api/v1/ping', v1Ping);
 app.use('/api/v1/submit_application', v1SubmitApplication);
+app.use('/api/v1/login_validate', v1LoginVailDate);
 app.listen(port, () => {
     logger.success(`=============================================`);
     logger.success(`||Server running at http://localhost:${port}/ ||`);
