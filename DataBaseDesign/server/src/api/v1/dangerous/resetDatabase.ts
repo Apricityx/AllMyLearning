@@ -38,11 +38,13 @@ api.get('/', (req: Request, res: Response) => {
                         'StdID INTEGER PRIMARY KEY AUTOINCREMENT,' +
                         'StdName TEXT,' +
                         'StdInfo TEXT,' +
-                        'StdPasswd TEXT)').run();
+                        'StdPasswd TEXT)' +
+                        'StdEmail TEXT' +
+                        'StdPhone INTEGER').run();
                     db.prepare("INSERT INTO StdData(StdID,StdName, StdInfo, StdPasswd)" +
                         "VALUES(222023321062100,'张三','admin', '062100');").run();
                     for (let i = 0; i < 50; i++) {
-                        db.prepare("INSERT INTO StdData(StdName, StdInfo, StdPasswd) VALUES(?,?,?)").run('学生' + i, '未填写', "0"+ (62101 + i).toString());
+                        db.prepare("INSERT INTO StdData(StdName, StdInfo, StdPasswd) VALUES(?,?,?)").run('学生' + i, '未填写', "0" + (62101 + i).toString());
                     }
 
                     db.prepare('CREATE TABLE TutorData(' +

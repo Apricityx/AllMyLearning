@@ -21,6 +21,13 @@ if (fs.existsSync(path.resolve(__dirname, "../../keys/private.pem"))) {
 } else {
     logger.error("Private Key File Not Found")
 }
+let publicKey = '';
+if (fs.existsSync(path.resolve(__dirname, "../../keys/public.pem"))) {
+    logger.debug("Public Key Loaded")
+    publicKey = fs.readFileSync(path.resolve(__dirname, "../../keys/public.pem"), 'utf-8');
+} else {
+    logger.error("Public Key File Not Found")
+}
 
 
 // 使用中间件
@@ -40,10 +47,18 @@ api.post('/', (req: Request, res: Response) => {// console.log(req.body)
     // 防止注入攻击
     logger.debug("尝试登录：用户名：" + info.name + " 密码：" + info.password + " 登录类型：" + info.type)
     if (result === undefined) {
-        res.send(constructor.error("Wrong username or password"))
+        res.send(constructor.error({"message": "Wrong Password or User Name"}))
         logger.debug("登录失败：用户名：" + info.name + " 密码：" + info.password + " 登录类型：" + info.type)
         return
     } else {
-        res.send(constructor.success("Success"))
+        logger.debug("登录成功：用户名：" + info.name + " 密码：" + info.password + " 登录类型：" + info.type)
+        const rawAccessToken = JSON.stringify({
+            "StdID": result.StdID,
+            "StdType": result.StdType,
+            "TimeStamp": new Date().getTime()
+        })
+        logger.debug("Access Token Raw Data: " + rawAccessToken)
+        const accessToken = forge.util.encode64(forge.pki.publicKeyFromPem(publicKey).encrypt(rawAccessToken))
+        res.send(constructor.success({"accessToken": accessToken}))
     }
 })

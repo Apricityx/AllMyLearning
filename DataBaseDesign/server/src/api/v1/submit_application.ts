@@ -16,10 +16,10 @@ const db = sqlite3(path.resolve(__dirname, '../../db/' + Configs.database_name +
 // 读取本地私钥准备解密
 let privateKey = '';
 if (fs.existsSync(path.resolve(__dirname, "../../keys/private.pem"))) {
-    logger.debug("Private Key Loaded")
+    // logger.debug("Private Key Loaded")
     privateKey = fs.readFileSync(path.resolve(__dirname, "../../keys/private.pem"), 'utf-8');
 } else {
-    logger.error("Private Key File Not Found")
+    // logger.error("Private Key File Not Found")
 }
 
 

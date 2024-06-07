@@ -1,10 +1,6 @@
 <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
-// import TheWelcome from './components/TheWelcome.vue'
-// import {Button as TinyButton} from '@opentiny/vue'
-// import { Input as TinyInput} from '@opentiny/vue'
 import type {ComponentSize, FormRules} from 'element-plus'
-import {reactive, ref} from 'vue'
+import {reactive, ref, watch} from 'vue'
 import JSEncrypt from 'jsencrypt'
 
 </script>
@@ -21,7 +17,7 @@ import JSEncrypt from 'jsencrypt'
             <el-form-item label="密码" prop="password">
                 <el-input v-model="form.password"/>
             </el-form-item>
-            <el-form-item label="用户类型" prop="user_type">
+            <el-form-item label="用户类型" prop="type">
                 <el-radio-group v-model="form.type">
                     <el-radio value="Std">学生</el-radio>
                     <el-radio value="Tutor">导师</el-radio>
@@ -94,13 +90,27 @@ import JSEncrypt from 'jsencrypt'
     text-decoration: none;
 }
 </style>
-
 <script lang="ts"> // 表单校验
 // import {ref} from "vue";
 
 // import {reactive} from "vue";
 
 // import {JSEncrypt} from "jsencrypt";
+// DEBUG函数
+
+function debug(content: any) {
+    console.log(content)
+}
+
+
+// signOut方法
+
+function signOut() {
+    document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
+
+
+signOut()
 
 const LoginForm = ref<FormInstance>()
 import {FormInstance} from "element-plus";
@@ -111,7 +121,40 @@ const form = reactive({
     password: '',
     remember: false,
     type: 'User',
-})
+});
+
+// 获取记住密码的信息
+// 记住密码的信息在cookie中，键为userInfo
+const userInfo = document.cookie.split('; ').find(row => row.startsWith('userRemember'))
+debug("获取到的userInfo：" + userInfo)
+if (userInfo) {
+    const userInfoBase64 = userInfo.split('=')[1]
+    const userInfoJson = atob(userInfoBase64)
+    const userInfoDict = JSON.parse(userInfoJson)
+    debug("获取到的userInfoDict：" + userInfoDict)
+    form.name = userInfoDict['name']
+    form.password = userInfoDict['password']
+    form.type = userInfoDict['type']
+    form.remember = true
+}
+// 监听remember变化
+watch(() => form.remember, (newValue) => {
+    if (!newValue) {
+        document.cookie = 'userRemember=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        debug('取消记住密码勾选')
+    } else {
+        debug('记住密码勾选')
+        const dict = {
+            'name': form.name,
+            'password': form.password,
+            'type': form.type,
+        }
+        const dictBase64 = btoa(JSON.stringify(dict))
+        document.cookie = 'userRemember=' + dictBase64
+    }
+});
+
+
 export default {
     data() { // 表单模型
         return {
@@ -127,8 +170,8 @@ export default {
                     {required: true, message: '请输入密码', trigger: 'blur'},
                     {min: 6, message: '密码长度不能少于6位', trigger: 'blur'},
                 ],
-                user_type: [
-                    {required: false, message: '请选择用户类型', trigger: 'submit'},
+                type: [
+                    {required: true, message: '请选择用户类型', trigger: 'submit'},
                 ],
             },
         };
@@ -138,50 +181,63 @@ export default {
             if (!formEl) return
             formEl.validate((valid, fields) => {
                 if (valid) {
-                    console.log('submit!')
-                    let name = form.name
-                    let password = form.password
-                    let dict = {
+                    debug('submit!')
+                    const name = form.name
+                    const password = form.password
+                    const dict = {
                         'name': name,
                         'password': password,
                         'type': form.type,
                     }
-                    console.log(JSON.stringify(dict))
+
+                    // 如果记住密码，将信息存入cookie
+                    let saveInfo = (infoDict: any) => {
+                        if (form.remember) {
+                            const dictBase64 = btoa(JSON.stringify(dict))
+                            document.cookie = 'userRemember=' + dictBase64
+                            debug('记住密码触发')
+                        } else {
+                            document.cookie = 'userRemember=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                        }
+                    }
+                    saveInfo(dict)
+
                     // RAS加密
-                    let publicKey = 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCgdx0+p1WE4PRob6DEFN248IC/cXyr2aVOz/+PhmTAD/HXttJb9u00bVRa/q29RiQSSPLdK4NgQSVIEa45W7grD/38UxxYhYbcL0K+pjYEXd80+wUMfY+syBXwljHysq5SnMd1VHeSBmUrCeb4u/c0x/TipwS7TwrjI8NPIRkt8Go8l0Uy3ny9vVoxijOjfGCJ2ui8Y/qx3OIL9m8HR6X7qBSTDHc28V+g3hiIA+Dic5V1tm8vsMnopVaNL2IFdZ+OKoEowLq6/DmvBq8/aRRJFt7rup1mYs6ZGTGYzJMP5N/4ZeR/jr12amRvAtEnCTR4e4K753ssi6/gPBSo1P9rAgMBAAECggEAGOD+7sTg9H4wRrTv9xbJHbBkNcpxqu9Ouv5ywBz1J/YQ6AIXcVzCgDtnNciAxXTHiPI4fWQOtXDER/09xvTahAqxtVppbaweMas+LPL2Mw0e20cEDGC3UvGevTN8QQXFE1ftcNqMw14sd1TMs8no1Q0fgbileikSJg9Ya79U+RMqNcnbTjAVG90MjczE6yoWU/J7WSphazhh6dEHoJSRMvjF5pD/kN8p4HMgw2eKB5HKYUQ7wF08Z77CGYwaCZxHLQbTihiH8K9NmkQj3lGKnj0Pu6c8MvjacgZk0xjAo5Yw1ko7+gojW3IQXnS4wYeK2+vyWJ7ILCWhFRBZNd9kqQKBgQD304gEW7LoNpAVjMEluWx2FEiNLGAW1MKBIW/QgpqcyR0R/+PW8/O9EUBPaHs6pN3VI+Ur8Z8FIFB5CpY+/ZhXHeOigugcsd09oncy2x43aJT2xwnPQvUiRYlubOS/7WSKm+tUG/dypzRbNibYbVMm/Q+mDTncP/Mpad3yaUHlpwKBgQClwfgFjpnF3CdJW91ePFJXTE7hM8+FfuGP2SSm/k83t8WDvOIUFV7dzX5c5mKlNHGmJCZX9l3WF3ANzNDTrPr3oe9UiMUkI8u1vg+yWLfHl+FRkFJhZO61THX3lrChavB89GYmXT02XLEqY9as6MRHFwbTa/XVRS8oF4zprnCYnQKBgQDYvSMjzJ62/6Ebd7IkL/pvemXJMZoH3aMOFBQaI17c5/aIm2bDwy7Tl5bK2/GJ5E4t7eqrd/E/Jne6pEuqY1csOXOv2RTuo49+K+xbic7vXoOJH6GwpjqE8pOzA4E7aX6YyqwRLzRGDX14l+95MIOcgY2CB+cmfLdI7NGzA+Mh2QKBgGYRGYs6ct/OH3bhlV8on79Xop6zi451QamVGSenItp5U6s6DLA3NJI5rhzAVG/L6ktWqTGy57cj+YDV5KTjOCpx0XBpQ5NsY0zG+t1kGc5SbJEP4FpOj1qd+Wn6pUrQEcOvrpLjCQVHcGRc09zm+62WtUJMkTTBBDeYwNFH89dVAoGBAJaZnh3h3gdSwWibBI6nDd/mrydp/8agDmsDcrLM+GdTP+GAA91iExKcZv+AKTR9iyXruwQgZ3gzzpRC8cBI6glik9TMXdUGI+kdxTaJCjVYaQu59K/xop1SGUO0eAMLfsXGaaVpQMenuLGteqiPg1nfx+QkaUPRLHUxKZilyZnz'
+                    let publicKey = "MIICCgKCAgEA4vVjhCKuq6JOUmje/hz7B9IQYTLNsXwY365RIJNdLwHdhY/q3qBSTWOpUeh2I8BdYuFVnAqWqZGfDfXSKjRCrxKMKMRXl87DsTStDcJz5hRgGPK++C61cnbQSRfeVvp4WfJn/iFusaxi6NwJJA56xThrnA5gYcbaZ49VLjE9HNmwf2Jz+SApyed4g1ec5vK2x4W/PBOD3/JABYZ3uWKPfYvlBIURe9fUj378eIOO+r6Cb/KrZPW+CcBTfVmLdPCwLYqmlT1L1hM13mm+5gbA3RE2wTn7Rd3AEPuJEeYdG/nytNSMsOCkNuVtgZuEg7dCbhUqRdQJw6OpO24Q//x2lENl6+qaWe43ZDKo1M8vVfquQI2mZRmZ6TDfaEFGT6c0dAqSXWteH2tpB/YHX5Z3rrdtDk4fLIg9V5zQbeNceSdBq59lNU2Uq3Qp+E8JR/ZttpdLgSfe9KGDuh+Xftwg1jea0Emsrqsw/DKx4xnf2RkAFY6F+0del+JFnEH15CbiN/pWxkQ0kMZHq3S27NKTvFEGGEjxMz5UZFlMhAZvTpei8bQ9f2JnHHR7YkjZSO+Szhi4QlsMomy64Udw6R4mHuMSA6jS8Y7S4dYWgEfahvIOm87PQ5BetJW55FrdfrllKIwH6gxfZ+zp5qVw8NTbDPYzDqixCJymXRBQ7FV9iN0CAwEAAQ=="
                     let encrypt = new JSEncrypt()
                     encrypt.setPublicKey(publicKey)
                     let encrypted = encrypt.encrypt(JSON.stringify(dict))
-                    console.log(encrypted)
+                    debug(encrypted)
                     // 输出当前目录
                     // let route:any = document.scripts;
                     // route = route[route.length - 1].src.substring(0, route[route.length - 1].src.lastIndexOf("/") + 1);
                     // console.log(route)
                     // 发送POST请求
-                    fetch('http://localhost:3000/api/v1/login_validate', {
+                    fetch('http://localhost:3000/api/v1/get_access_token', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({'encrypted': encrypted}),
                     }).then(response => response.json()).then(data => {
-                        console.log(JSON.stringify(data))
+                        debug(JSON.stringify(data))
                         if (data['status'] === 'success') {
-                            console.log('登录成功')
+                            debug('登录成功')
                             alert('登录成功')
-                            document.cookie = 'user_information=' + encrypted
+                            document.cookie = 'accessToken=' + encrypted
                         } else {
                             alert('登录失败')
-                            console.log('登录失败')
+                            debug('登录失败')
                         }
                     }).catch(error => console.error('Error:', error));
                 } else {
-                    console.log('error submit!')
+                    debug('error submit!')
                 }
             })
         },
     },
 };
+
 // const submitForm = async (formEl: FormInstance | undefined) => {
 //     if (!formEl) return
 //     await formEl.validate((valid, fields) => {
@@ -193,5 +249,4 @@ export default {
 //         }
 //     })
 // }
-
 </script>

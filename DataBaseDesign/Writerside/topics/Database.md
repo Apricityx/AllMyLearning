@@ -52,10 +52,6 @@ FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID),
 - StdID 引用 StdData 的 StdID
 - TutorID 引用 TutorData 的 TutorID
 
-#### 示例插入
-
-```SQL
-```
 
 ### Application
 
@@ -76,4 +72,3 @@ FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID))
 
 ### E-R图
 
-![E-R.png](E-R.png)

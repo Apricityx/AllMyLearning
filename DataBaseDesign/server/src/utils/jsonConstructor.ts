@@ -1,14 +1,14 @@
-export function error(message: string) {
+export function error(extraData?: any) {
     return {
         "status": "error",
-        "message": message
+        ...extraData
     }
 }
 
-export function success(message: string) {
+export function success(extraData?: any) {
     return {
         "status": "success",
-        "message": message
+        ...extraData
     }
 }
 
