@@ -1,14 +1,14 @@
 import {Router, Request, Response} from 'express';
-import {consoleDebug} from '../../../utils/debug';
+import {consoleDebug} from '@/utils/debug';
 import sqlite3 from 'better-sqlite3'; // 导入 better-sqlite3 模块
 import * as path from "node:path";
 import * as constructor from "../../../utils/jsonConstructor";
-import {Configs} from "../../../utils/loadGlobalVar";
+import {Configs} from "@/utils/loadGlobalVar";
 
 const logger = new consoleDebug();
 export const api = Router();
 // 创建数据库连接
-const db = sqlite3(path.resolve(__dirname, '../../../db/' + Configs.database_name + '.db'));
+const db = sqlite3(path.resolve(__dirname, `../../../db/${Configs.database_name}.db`));
 api.get('/', (req: Request, res: Response) => {
         db.prepare('DROP TABLE IF EXISTS application').run();
         res.setHeader('Content-Type', 'application/json');
@@ -18,7 +18,7 @@ api.get('/', (req: Request, res: Response) => {
             // const database_name = req.query.database_name as string;
             if (key === undefined) {
                 logger.debug("Wrong request: Lack of parameters");
-                res.send(constructor.error("Lack of parameters"));
+                res.send(constructor.error({"message": "Bad request"}));
                 return;
             }
 
@@ -74,21 +74,21 @@ api.get('/', (req: Request, res: Response) => {
                         'FOREIGN KEY(StdID) REFERENCES StdData(StdID),' +
                         'FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID))'
                     ).run();
-                    res.send(constructor.success("Database has been reset!"))
+                    res.send(constructor.success({"message": "Database has been reset!"}))
                     logger.debug("Database has been reset!")
                 } catch
                     (e) {
                     logger.error("Failed to reset database: " + e);
-                    res.send(constructor.error(e as string))
+                    res.send(constructor.error({"message": "Failed to reset database"}))
                     return
                 }
             } else {
-                res.send(constructor.error("Wrong Key"));
+                res.send(constructor.error({"message": "Wrong key"}));
             }
         } catch
             (error) {
             logger.error("请求错误：缺少参数");
-            res.send(constructor.error("Bad request"));
+            res.send(constructor.error({"message": "Bad request"}));
         }
     }
 )

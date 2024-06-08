@@ -9,7 +9,7 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "baseUrl": "/",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"
@@ -24,7 +24,7 @@
     "noEmit": true,
     "jsx": "preserve",
     /* Linting */
-//    "strict": true,
+    //    "strict": true,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
@@ -40,3 +40,4 @@
     }
   ]
 }
+//Todo: 按钮按下后添加一个disabled属性，防止重复点击 修复type无法校验的问题
