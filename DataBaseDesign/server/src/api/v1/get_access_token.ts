@@ -40,7 +40,7 @@ api.post('/', (req: Request, res: Response) => {// console.log(req.body)
         return
     } else {
         logger.debug("登录成功：用户名：" + info.name + " 密码：" + info.password + " 登录类型：" + info.type)
-        const rawAccessToken = JSON.stringify({
+        const rawAccessToken: string = JSON.stringify({
             "ID": info.name,
             "Passwd": info.password,
             "Type": info.user_type,

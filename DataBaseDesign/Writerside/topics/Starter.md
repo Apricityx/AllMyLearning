@@ -1,7 +1,6 @@
 # 学业导师管理系统
 
 ## 此系统将实现以下功能：
-
 - 登录界面
     - 防止注入攻击
     - 防止暴力破解
@@ -23,6 +22,6 @@
 
 ## 选择技术栈：
 
-- 前端：Vue.js
+- 前端：Vue.js Vite
 - 后端：NodeJS Express TypeScript
 - 数据库：SQLite

@@ -38,9 +38,9 @@ api.get('/', (req: Request, res: Response) => {
                         'StdID INTEGER PRIMARY KEY AUTOINCREMENT,' +
                         'StdName TEXT,' +
                         'StdInfo TEXT,' +
-                        'StdPasswd TEXT)' +
-                        'StdEmail TEXT' +
-                        'StdPhone INTEGER').run();
+                        'StdPasswd TEXT,' +
+                        'StdEmail TEXT,' +
+                        'StdPhone INTEGER)').run();
                     db.prepare("INSERT INTO StdData(StdID,StdName, StdInfo, StdPasswd)" +
                         "VALUES(222023321062100,'张三','admin', '062100');").run();
                     for (let i = 0; i < 50; i++) {
@@ -70,6 +70,7 @@ api.get('/', (req: Request, res: Response) => {
                     db.prepare('CREATE TABLE Application(' +
                         'StdID INTEGER,' +
                         'TutorID INTEGER,' +
+                        'IsAccepted INTEGER,' +
                         'PRIMARY KEY(StdID, TutorID),' +
                         'FOREIGN KEY(StdID) REFERENCES StdData(StdID),' +
                         'FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID))'
