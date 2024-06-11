@@ -15,20 +15,11 @@ const logger = new consoleDebug();
 const db = sqlite3(path.resolve(__dirname, '../../db/' + Configs.database_name + '.db'));
 
 interface Tutors {
-    "tutorId": string,
-    "name": string
-    "email": string
-    "phone": string
-    "introduction": string
-    "requestStatus": "pending" | "accepted" | "rejected"
-}
-
-interface TutorFromDB {
-    TutorID: string,
-    TutorName: string,
-    TutorEmail: string,
-    Phone: string,
-    TutorInfo: string
+    "TutorID": string,
+    "TutorName": string
+    "TutorInfo": string
+    "TutorEmail": string,
+    "Status": string
 }
 
 export const std_get_info = (stdID: string) => {
@@ -41,32 +32,35 @@ export const std_get_info = (stdID: string) => {
     let finalResponse = {
         message: "Student Get Info Successfully",
         status: "success",
-        tutors: [],
+        tutor: "unset",
+        tutors: [] as Tutors[],
         selfInfo: selfInfo
     }
-    let tutors_data = db.prepare(`SELECT * FROM TutorData`).all()
-    for (let i = 0; i < tutors_data.length; i++) {
-        let tutor = tutors_data[i] as TutorFromDB
-        // logger.debug("Tutor: " + JSON.stringify(tutor))
-        // 是否有申请 -> 申请状态
-        let request = db.prepare(`SELECT IsAccepted FROM Application WHERE StdID = ? AND TutorID = ?`).get(stdID, tutor.TutorID)
-        // @ts-ignore
-        let request_status = request.IsAccpeted
-        if (request_status === undefined) {
-            request_status = "Unset"
-        } else {
-            request_status = request_status === "True" ? "accepted" : "rejected"
-        }
-        let tutorInfo: Tutors = {
-            tutorId: tutor.TutorID,
-            name: tutor.TutorName,
-            email: tutor.TutorEmail,
-            phone: tutor.Phone,
-            introduction: tutor.TutorInfo,
-            requestStatus: request_status
-        }
-        // @ts-ignore
-        finalResponse.tutors.push(tutorInfo)
+    const selfInfoFromDB = db.prepare("SELECT * FROM StdData WHERE StdID = ?").get(stdID) as any
+    if (selfInfoFromDB === undefined) {
+        finalResponse.message = "Student Not Found"
+        finalResponse.status = "error"
+        return finalResponse
     }
-    return finalResponse
+    selfInfo.name = selfInfoFromDB.StdName
+    selfInfo.email = selfInfoFromDB.StdEmail
+    selfInfo.phone = selfInfoFromDB.Phone
+    selfInfo.introduction = selfInfoFromDB.StdInfo
+
+    // 如果Accepted表中有该学生的数据，则填写tutor
+    const selectInfoFromDB = db.prepare("SELECT * FROM Accepted WHERE StdID = ?").get(stdID) as any
+    const isAccepted: boolean = selectInfoFromDB !== undefined
+    // logger.debug("Is Accepted: " + isAccepted)
+    if (selectInfoFromDB !== undefined) {
+        // logger.debug("Tutor: " + JSON.stringify(selectInfoFromDB))
+        finalResponse.tutor = selectInfoFromDB.TutorID
+        return finalResponse
+    } else {
+        // 合并表，填写tutors
+        const tutorsFromDB: Tutors[] = db.prepare("SELECT TutorData.TutorID,TutorData.TutorName,TutorData.TutorInfo,Status FROM TutorData LEFT JOIN Application ON TutorData.TutorID = Application.TutorID AND Application.StdID = ?;").all(stdID) as Tutors[];
+        logger.debug("Tutors: " + JSON.stringify(tutorsFromDB))
+        finalResponse.tutors = tutorsFromDB
+        logger.debug("最终返回数据：" + JSON.stringify(finalResponse))
+        return finalResponse
+    }
 }

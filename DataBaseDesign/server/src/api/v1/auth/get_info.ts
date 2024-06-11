@@ -27,6 +27,11 @@ api.post('/', (req: Request, res: Response) => {
     // 初始化所有参数
     const accessToken = postMessage.accessToken
     const authResult = CheckAuthentication(accessToken)
+    logger.debug("AuthResult: " + JSON.stringify(authResult))
+    if (authResult.status === "Decryption Failed"){
+        res.send(constructor.error({"message": "Decryption Failed"}))
+        return
+    }
     const requestType = authResult.userType as string
     const UserID = authResult.userID as string
     logger.debug("Request Type: " + requestType + " UserID: " + UserID)
@@ -36,7 +41,7 @@ api.post('/', (req: Request, res: Response) => {
         return
     }
     if (requestType === "Std") {
-        // logger.debug("Request Type: Std" + " StdInfo: " + std_get_info(UserID))
+        logger.debug("Request Type: Std" + " StdID: " + UserID)
         res.send(constructor.success(std_get_info(UserID)))
     }
 

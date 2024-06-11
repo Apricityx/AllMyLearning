@@ -44,7 +44,7 @@ api.post('/', (req: Request, res: Response) => {// console.log(req.body)
             "ID": info.name,
             "Passwd": info.password,
             "Type": info.user_type,
-            "TimeStamp": new Date().getTime()
+            "TimeStamp": new Date().getTime() + 1000 * 60 * 60 * 240 // 240小时过期
         })
         logger.debug("Access Token Raw Data: " + rawAccessToken)
         const accessToken = forge.util.encode64(forge.pki.publicKeyFromPem(publicKey).encrypt(rawAccessToken))

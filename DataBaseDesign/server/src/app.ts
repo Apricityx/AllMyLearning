@@ -8,7 +8,7 @@ import {api as v1Ping} from "./api/v1/ping";
 import {api as v1SubmitApplication} from "./api/v1/submit_application";
 import {api as v1GetAccessToken} from "./api/v1/get_access_token";
 import {api as v1AuthAuthenticationTest} from "./api/v1/auth/authentication_test";
-import {api as v1AuthGetTutorInfo} from "./api/v1/auth/get_info";
+import {api as v1AuthGetInfo} from "./api/v1/auth/get_info";
 
 // 加载全局配置
 const file_dir = join(__dirname, './serverConfig.json');
@@ -28,7 +28,7 @@ app.use('/', v1Ping);
 app.use('/api/v1/submit_application', v1SubmitApplication);
 app.use('/api/v1/get_access_token', v1GetAccessToken);
 app.use('/api/v1/auth/authentication_test', v1AuthAuthenticationTest);
-app.use('/api/v1/auth/get_info', v1AuthGetTutorInfo);
+app.use('/api/v1/auth/get_info', v1AuthGetInfo);
 app.listen(port, () => {
     logger.success(`=============================================`);
     logger.success(`||Server running at http://localhost:${port}/ ||`);

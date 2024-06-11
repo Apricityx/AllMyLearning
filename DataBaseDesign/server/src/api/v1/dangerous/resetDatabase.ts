@@ -29,11 +29,6 @@ api.get('/', (req: Request, res: Response) => {
                     db.prepare('DROP TABLE IF EXISTS Accepted').run();
                     db.prepare('DROP TABLE IF EXISTS TutorData').run();
                     db.prepare('DROP TABLE IF EXISTS StdData').run();
-                    db.prepare('DROP TABLE IF EXISTS Application').run();
-                    db.prepare('DROP TABLE IF EXISTS Accepted').run();
-                    db.prepare('DROP TABLE IF EXISTS TutorData').run();
-                    db.prepare('DROP TABLE IF EXISTS StdData').run();
-
                     db.prepare('CREATE TABLE StdData(' +
                         'StdID INTEGER PRIMARY KEY AUTOINCREMENT,' +
                         'StdName TEXT,' +
@@ -51,6 +46,7 @@ api.get('/', (req: Request, res: Response) => {
                         'TutorID INTEGER PRIMARY KEY AUTOINCREMENT,' +
                         'TutorName TEXT,' +
                         'TutorInfo TEXT,' +
+                        'TutorEmail TEXT' +
                         'TutorPasswd TEXT)').run();
 
                     db.prepare("INSERT INTO TutorData(TutorID, TutorName, TutorInfo, TutorPasswd)" +
@@ -70,7 +66,7 @@ api.get('/', (req: Request, res: Response) => {
                     db.prepare('CREATE TABLE Application(' +
                         'StdID INTEGER,' +
                         'TutorID INTEGER,' +
-                        'IsAccepted INTEGER,' +
+                        'Status TEXT,' +
                         'PRIMARY KEY(StdID, TutorID),' +
                         'FOREIGN KEY(StdID) REFERENCES StdData(StdID),' +
                         'FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID))'

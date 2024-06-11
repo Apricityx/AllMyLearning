@@ -29,6 +29,7 @@ VALUES('张三', '计算机专业，擅长算法', '123456');
 CREATE TABLE TutorData(
 TutorID INTEGER PRIMARY KEY,
 TutorName TEXT,
+TutorEmail TEXT,
 TutorInfo TEXT,
 TutorPasswd TEXT)
 ```
@@ -52,11 +53,10 @@ FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID),
 - StdID 引用 StdData 的 StdID
 - TutorID 引用 TutorData 的 TutorID
 
-
 ### Application
 
-| StdID (FK) | TutorID (FK) |
-|------------|--------------|
+| StdID (FK) | TutorID (FK) | Status |
+|------------|--------------|--------|
 
 - StdID 引用 StdData 的 StdID
 - TutorID 引用 TutorData 的 TutorID
@@ -65,6 +65,7 @@ FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID),
 CREATE TABLE Application(
 StdID INTEGER,
 TutorID INTEGER,
+Status TEXT,
 PRIMARY KEY(StdID, TutorID),
 FOREIGN KEY(StdID) REFERENCES StdData(StdID),
 FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID)) 

@@ -5,7 +5,6 @@ import type {ComponentSize, FormInstance,} from 'element-plus'
 import {debug} from "@/utils/debug";
 import JSEncrypt from "jsencrypt";
 import {resolve} from "path";
-
 // 创建一个响应式变量
 const isDisabled = ref(false)
 
@@ -130,7 +129,7 @@ const onSubmit = async (Form: FormInstance) => {
     })
 }
 
-//
+
 </script>
 
 <template>

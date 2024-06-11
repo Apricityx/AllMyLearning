@@ -119,7 +119,7 @@
 
 - 请求方式: POST
 - 请求参数: accessToken
-- 请求地址: v1/auth/get_tutor_info
+- 请求地址: v1/auth/get_info
 - 请求示例:
 
 导师请求
@@ -186,6 +186,7 @@
 {
   "status": "success",
   "message": "Authentication Success",
+  "tutor": "王导 | unset",
   "tutors": [
     {
       "name": "张导",
