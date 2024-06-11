@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import axios from 'axios';
-import { debug } from '@/utils/debug';
+import {debug} from '@/utils/debug';
 import InfoContainer from "@/component/StdPage/InfoContainer.vue";
-import { onMounted, ref } from "vue";
+import {onMounted, ref} from "vue";
+import StdAside from "@/component/StdPage/StdAside.vue";
 
 const temp_data = ref<string>('');
 const get_info = () => {
@@ -36,10 +37,36 @@ onMounted(() => {
 </script>
 
 <template>
-    <div style="border:2px solid black">
-        <InfoContainer :httpResult="temp_data"/>
-    </div>
+    <el-container>
+        <el-aside width="200px" style="border-right: 2px solid #a8a8a8">
+            <div>
+                <StdAside :http-result="temp_data"/>
+            </div>
+        </el-aside>
+        <el-container>
+            <el-header>
+                <el-button type="primary" @click="get_info" style="position: absolute;bottom: 10px;left: 10px;">刷新
+                </el-button>
+            </el-header>
+            <el-main>
+                <div style="box-shadow: black 0 0 5px;padding: 10px">
+                    <p style="text-align:center;font-weight: bold">可选导师</p>
+                    <InfoContainer :httpResult="temp_data"/>
+                </div>
+            </el-main>
+        </el-container>
+    </el-container>
 </template>
-
 <style scoped>
+/* 使 el-main 独立滚动 */
+.el-main {
+    height: calc(100vh - 64px); /* Adjust 64px based on your header/footer height */
+    overflow-y: auto;
+}
+
+.el-header {
+    border-bottom: 2px solid #a8a8a8;
+    position: relative;
+    transition: height 0.3s;
+}
 </style>
