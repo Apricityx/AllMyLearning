@@ -47,7 +47,8 @@
         {
           &quot;status&quot;: &quot;success&quot;,
           &quot;message&quot;: &quot;Access Token has been generated!&quot;,
-          &quot;accessToken&quot;: &quot;eyJhbG....&quot;
+          &quot;accessToken&quot;: &quot;eyJhbG....&quot;,
+          "name":"张三"
         }
         </code-block>
         <p>可用的type有&quot;Std&quot;和&quot;Tutor&quot;</p>
@@ -103,6 +104,7 @@
 </deflist>
 
 ##### 获取导师/学生信息接口 {collapsible="true"}
+
 该接口会被两个页面调用，分别为导师页面与学生页面，返回的数据不同
 导师页面
 
