@@ -28,26 +28,30 @@ api.post('/', (req: Request, res: Response) => {// console.log(req.body)
     const data: string = forge.pki.privateKeyFromPem(privateKey).decrypt(dataRSA)
     logger.conn("Login Info " + data)
     const info = JSON.parse(data)
+    // logger.debug("转化后的info" + JSON.stringify(info))
     // const result: any = db.prepare("SELECT * FROM StdData WHERE StdID = ? AND StdPasswd = ?").get(info.name, info.password)
     const loginType = info.user_type === 'Std' ? 'StdData' : 'TutorData'
     logger.debug("Login Type: " + loginType)
-    const result: any = db.prepare(`SELECT * FROM ${loginType} WHERE ${loginType === 'StdData' ? 'StdID' : 'TutorID'} = ? AND ${loginType === 'StdData' ? 'StdPasswd' : 'TutorPasswd'} = ?`).get(info.name, info.password)
     // 防止注入攻击
-    logger.debug("尝试登录：用户名：" + info.name + " 密码：" + info.password + " 登录类型：" + info.type)
+    const result: any = db.prepare(`SELECT * FROM ${loginType} WHERE ${loginType === 'StdData' ? 'StdID' : 'TutorID'} = ? AND ${loginType === 'StdData' ? 'StdPasswd' : 'TutorPasswd'} = ?`).get(info.id, info.password)
+    logger.debug("获取到数据库信息：" + JSON.stringify(result))
+    logger.debug("尝试登录：用户ID：" + info.id + " 密码：" + info.password + " 登录类型：" + info.user_type)
     if (result === undefined) {
-        res.send(constructor.error({"message": "Wrong Password or User Name"}))
-        logger.debug("登录失败：用户名：" + info.name + " 密码：" + info.password + " 登录类型：" + info.type)
+        res.send(constructor.error({"message": "Wrong Password or User ID"}))
+        logger.debug("登录失败：用户ID：" + info.id + " 密码：" + info.password + " 登录类型：" + info.user_type)
         return
     } else {
-        logger.debug("登录成功：用户名：" + info.name + " 密码：" + info.password + " 登录类型：" + info.type)
+        info.name = info.user_type === "Std" ? result.StdName : result.TutorName
+        logger.debug("获取到用户名字 " + info.name)
+        logger.debug("登录成功：用户ID：" + info.id + " 密码：" + info.password + " 登录类型：" + info.user_type)
         const rawAccessToken: string = JSON.stringify({
-            "ID": info.name,
+            "ID": info.id,
             "Passwd": info.password,
             "Type": info.user_type,
             "TimeStamp": new Date().getTime() + 1000 * 60 * 60 * 240 // 240小时过期
         })
         logger.debug("Access Token Raw Data: " + rawAccessToken)
         const accessToken = forge.util.encode64(forge.pki.publicKeyFromPem(publicKey).encrypt(rawAccessToken))
-        res.send(constructor.success({"accessToken": accessToken}))
+        res.send(constructor.success({"accessToken": accessToken, "name": info.name}))
     }
 })

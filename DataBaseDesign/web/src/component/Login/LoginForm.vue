@@ -1,21 +1,33 @@
 <script setup lang="ts">
-import {reactive, ref} from "vue";
+import {h, reactive, ref} from "vue";
 import LoginForm from "@/component/Login/LoginForm.vue";
-import type {ComponentSize, FormInstance,} from 'element-plus'
+import {ComponentSize, ElMessage, FormInstance,} from 'element-plus'
 import {debug} from "@/utils/debug";
 import JSEncrypt from "jsencrypt";
 import {resolve} from "path";
+import 'element-plus/dist/index.css'
+import {checkLogin} from "@/utils/checkLogin.ts";
 // 创建一个响应式变量
-const isDisabled = ref(false)
 
 // 定义组件大小
 const formSize = ref<ComponentSize>('default')
 const FormRef = ref<FormInstance>()
 // FormRef 是一个引用，用于引用表单实例
+const isSubmitting = ref(false)
+
+// 定义消息提示框
+const openVn = () => {
+    ElMessage({
+        message: h('p', {style: 'line-height: 1; font-size: 14px'}, [
+            h('span', null, 'Message can be '),
+            h('i', {style: 'color: teal'}, 'VNode'),
+        ]),
+    })
+}
 
 // 定义Form
 const form = reactive({
-    name: '',
+    id: '',
     password: '',
     remember: false,
     user_type: '', // 确保属性名为 user_type
@@ -29,7 +41,7 @@ if (userInfo) {
     const userInfoJson = atob(userInfoBase64)
     const userInfoDict = JSON.parse(userInfoJson)
     debug("获取到的userInfoDict：" + userInfoDict)
-    form.name = userInfoDict['name']
+    form.id = userInfoDict['id']
     form.password = userInfoDict['password']
     form.user_type = userInfoDict['user_type']
     form.remember = true
@@ -37,7 +49,7 @@ if (userInfo) {
 
 
 interface FormRules {
-    name: any
+    id: any
     password: any
     user_type: any
     remember: any
@@ -46,7 +58,7 @@ interface FormRules {
 // 创建接口，用于定义表单数据的类型
 
 const ruleFrom = reactive<FormRules>({
-    name: '',
+    id: '',
     password: '',
     remember: false,
     user_type: '', // 确保属性名为 user_type
@@ -56,7 +68,7 @@ const ruleFrom = reactive<FormRules>({
 
 // 定义表单验证规则
 const rules = reactive(<FormRules>{
-    name: [
+    id: [
         {required: true, message: '请输入姓名', trigger: 'blur'},
     ],
     password: [
@@ -77,10 +89,10 @@ const onSubmit = async (Form: FormInstance) => {
     await Form.validate((valid, fields) => {
         if (valid) {
             debug('submit!')
-            const name = form.name
+            const id = form.id
             const password = form.password
             const dict = {
-                'name': name,
+                'id': id,
                 'password': password,
                 'user_type': form.user_type,
             }
@@ -98,7 +110,7 @@ const onSubmit = async (Form: FormInstance) => {
             encrypt.setPublicKey(publicKey)
             const encrypted = encrypt.encrypt(JSON.stringify(dict)) as string
             debug(encrypted)
-            isDisabled.value = true
+            isSubmitting.value = true
             fetch('http://localhost:3000/api/v1/get_access_token', {
                 method: 'POST',
                 headers: {
@@ -106,19 +118,30 @@ const onSubmit = async (Form: FormInstance) => {
                 },
                 body: JSON.stringify({'encrypted': encrypted}),
             }).then(response => response.json()).then(data => {
-                isDisabled.value = false
+                isSubmitting.value = false
+                debug("收到respond" + JSON.stringify(data))
                 debug("收到AccessToken数据：" + JSON.stringify(data))
                 if (data['status'] === 'success') {
                     debug('登录成功')
-                    alert('登录成功')
+                    ElMessage({
+                        message: `欢迎，${data.name}`,
+                        type: 'success',
+                    })
+                    // alert('登录成功')
                     // debug("接受到数据：" + data)
                     document.cookie = 'accessToken=' + data['accessToken']
+                    setTimeout(() => {
+                        checkLogin(true)
+                    }, 2000)
                 } else {
-                    alert('登录失败')
+                    ElMessage({
+                        message: '登录失败，请检查账户名密码后重试',
+                        type: 'warning',
+                    })
                     debug('登录失败')
                 }
             }).catch(error => {
-                isDisabled.value = false
+                isSubmitting.value = false
                 console.error('Error:', error)
             });
         } else {
@@ -135,8 +158,8 @@ const onSubmit = async (Form: FormInstance) => {
 <template>
     <el-form :rules="rules" :model="form" label-width="auto" style="max-width: 600px" ref="FormRef"
              size="large">
-        <el-form-item label="用户名" prop="name">
-            <el-input v-model="form.name"/>
+        <el-form-item label="用户名" prop="id">
+            <el-input v-model="form.id"/>
         </el-form-item>
         <el-form-item label="密码" prop="password">
             <el-input v-model="form.password"/>
@@ -152,7 +175,7 @@ const onSubmit = async (Form: FormInstance) => {
             <el-switch v-model="form.remember"/>
         </el-form-item>
         <el-form-item>
-            <el-button type="primary" @click="onSubmit(FormRef)" :disabled="isDisabled">提交</el-button>
+            <el-button type="primary" @click="onSubmit(FormRef)" :loading="isSubmitting">提交</el-button>
         </el-form-item>
     </el-form>
 </template>

@@ -4,6 +4,7 @@ import {debug} from '@/utils/debug';
 import InfoContainer from "@/component/StdPage/InfoContainer.vue";
 import {onMounted, ref} from "vue";
 import StdAside from "@/component/StdPage/StdAside.vue";
+import {checkLogin} from "@/utils/checkLogin.ts";
 
 const temp_data = ref<string>('');
 const get_info = () => {
@@ -26,19 +27,20 @@ const get_info = () => {
         .catch(error => {
             alert('请求失败，请重新登录再试');
             document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-            window.location.href = './login';
+            window.location.href = './Login.html';
             debug('Error:' + error);
         });
 }
-
+// 检查是否登录
 onMounted(() => {
+    checkLogin(false)
     get_info();
 });
 </script>
 
 <template>
     <el-container>
-        <el-aside width="200px" style="border-right: 2px solid #a8a8a8">
+        <el-aside width="200px" style="border-right: 2px solid #a8a8a8;background-color:var(--el-color-info-dark-2)">
             <div>
                 <StdAside :http-result="temp_data"/>
             </div>
@@ -48,7 +50,7 @@ onMounted(() => {
                 <el-button type="primary" @click="get_info" style="position: absolute;bottom: 10px;left: 10px;">刷新
                 </el-button>
             </el-header>
-            <el-main>
+            <el-main style="background: var(--el-color-info-light-8)">
                 <div style="box-shadow: black 0 0 5px;padding: 10px">
                     <p style="text-align:center;font-weight: bold">可选导师</p>
                     <InfoContainer :httpResult="temp_data"/>
@@ -60,7 +62,7 @@ onMounted(() => {
 <style scoped>
 /* 使 el-main 独立滚动 */
 .el-main {
-    height: calc(100vh - 64px); /* Adjust 64px based on your header/footer height */
+    height: calc(100vh - 60px); /* Adjust 64px based on your header/footer height */
     overflow-y: auto;
 }
 

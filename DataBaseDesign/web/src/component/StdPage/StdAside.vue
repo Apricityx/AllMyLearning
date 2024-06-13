@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import {watch, defineProps, ref} from 'vue';
+import {watch, ref} from 'vue';
+import {SwitchButton} from '@element-plus/icons-vue'
+import {ElMessageBox} from "element-plus";
 
 const props = defineProps<{
     httpResult: string
@@ -28,10 +30,45 @@ watch(
     },
     {immediate: true}
 );
+
+// 登出函数
+const dialogVisible = ref(false)
+// ElMessageBox.confirm('Are you sure to close this dialog?')
+const logoutStatus = ref(false)
+const logout = () => {
+    logoutStatus.value = true
+    setTimeout(() => {
+        document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+        window.location.href = './Login.html';
+    }, 1000)
+}
 </script>
 
 <template>
-    <p style="text-align: center;font-weight: bold;font-size: 17px">{{ greeting }}</p>
+    <el-dialog
+        v-model="dialogVisible"
+        title="提示"
+        width="500"
+        :before-close="()=>{dialogVisible = false}"
+    >
+        <span>确认要登出吗？</span>
+        <template #footer>
+            <div class="dialog-footer">
+                <el-button @click="dialogVisible = false">取消</el-button>
+                <el-button type="primary" @click="logout()" :loading=logoutStatus>登出</el-button>
+            </div>
+        </template>
+    </el-dialog>
+    <p style="color:white;text-align: center;font-weight: bold;font-size: 17px">{{ greeting }}</p>
+    <el-button @click="dialogVisible = true" type="danger"
+               style="position: absolute; bottom: 10px; left: 10px; width: 180px; margin: auto">
+        <el-icon>
+            <SwitchButton/>
+        </el-icon>
+        <p>
+            退出登录
+        </p>
+    </el-button>
 </template>
 
 <style scoped>
