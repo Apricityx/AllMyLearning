@@ -13,25 +13,29 @@ import {CheckAuthentication} from "@/utils/authentication";
 const logger = new consoleDebug();
 const db = sqlite3(path.resolve(__dirname, '../../db/' + Configs.database_name + '.db'));
 
-interface OneStd {
+interface SelfInfo {
+    "tutorId": string,
     "name": string
     "email": string
     "phone": string
     "introduction": string
 }
 
-interface OneRequest {
-    "id": 1,
-    "stdId": 1,
-    "status": "pending" | "accepted" | "rejected"
-    "stdInfo": OneStd
-}
-
-export const tutor_get_info = (stdID: string) => {
+export const tutor_get_info = (tutorID: string) => {
     let selfInfo = {}
     let finalResponse = Constructor.success({
         message: "Tutor Get Info Successfully",
         stdRequests: [],
-        selfInfo: selfInfo
+        selfInfo: selfInfo as SelfInfo
     })
+    const stdRequestFromDB = db.prepare("SELECT StdData.StdID,StdData.StdInfo as introduction,Application.Status,StdData.StdName FROM Application INNER JOIN StdData ON Application.StdID = StdData.StdID WHERE Application.TutorID=?;").all(tutorID) as any
+    logger.debug("Requests Info: " + JSON.stringify(stdRequestFromDB))
+    const selfInfoFromDB = db.prepare("SELECT * FROM TutorData WHERE TutorID = ?").get(tutorID) as any
+    logger.debug("Self Info: " + JSON.stringify(selfInfoFromDB))
+
+    finalResponse.selfInfo = selfInfoFromDB
+    finalResponse.stdRequests = stdRequestFromDB
+
+    logger.debug("Final Response: " + JSON.stringify(finalResponse))
+    return finalResponse
 }

@@ -37,7 +37,7 @@ api.get('/', (req: Request, res: Response) => {
                         'StdEmail TEXT,' +
                         'StdPhone INTEGER)').run();
                     db.prepare("INSERT INTO StdData(StdID,StdName, StdInfo, StdPasswd)" +
-                        "VALUES(222023321062100,'张三','admin', '062100');").run();
+                        "VALUES(222023321062100,'王小华','王小华，现为知名大学计算机科学与技术学院的硕士研究生，师从李晓明教授。她于2022年获得本校计算机科学与技术专业的学士学位，并以优异的成绩考取了研究生。', '062100');").run();
                     for (let i = 0; i < 50; i++) {
                         db.prepare("INSERT INTO StdData(StdName, StdInfo, StdPasswd) VALUES(?,?,?)").run('学生' + i, '未填写', "0" + (62101 + i).toString());
                     }
@@ -46,11 +46,11 @@ api.get('/', (req: Request, res: Response) => {
                         'TutorID INTEGER PRIMARY KEY AUTOINCREMENT,' +
                         'TutorName TEXT,' +
                         'TutorInfo TEXT,' +
-                        'TutorEmail TEXT' +
+                        'TutorEmail TEXT,' +
                         'TutorPasswd TEXT)').run();
 
                     db.prepare("INSERT INTO TutorData(TutorID, TutorName, TutorInfo, TutorPasswd)" +
-                        "VALUES(100000,'示例导师" + "','未填写'," + (100000).toString() + ");").run();
+                        "VALUES(100000,'李晓明" + "','研究方向：人工智能、机器学习、大数据分析，现任职于知名大学的计算机科学与技术学院，担任教授和博士生导师。他于2005年获得本校计算机科学与技术博士学位，随后前往美国麻省理工学院（MIT）进行博士后研究。在MIT期间，他参与了多个国家级人工智能项目，并在顶级学术期刊上发表了多篇高影响力论文。'," + (100000).toString() + ");").run();
                     for (let i = 0; i < 50; i++) {
                         db.prepare("INSERT INTO TutorData(TutorName, TutorInfo, TutorPasswd)" +
                             "VALUES('导师" + i + "','未填写'," + (100001 + i).toString() + ");").run();
@@ -64,13 +64,19 @@ api.get('/', (req: Request, res: Response) => {
                         'FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID))').run();
 
                     db.prepare('CREATE TABLE Application(' +
-                        'StdID INTEGER,' +
-                        'TutorID INTEGER,' +
+                        'StdID TEXT,' +
+                        'TutorID TEXT,' +
                         'Status TEXT,' +
                         'PRIMARY KEY(StdID, TutorID),' +
                         'FOREIGN KEY(StdID) REFERENCES StdData(StdID),' +
                         'FOREIGN KEY(TutorID) REFERENCES TutorData(TutorID))'
                     ).run();
+                    db.prepare("INSERT INTO Application(StdID, TutorID, Status) VALUES(222023321062100, 100000, 'Pending')").run();
+                    db.prepare("INSERT INTO Application(StdID, TutorID, Status) VALUES(222023321062102, 100000, 'Pending')").run();
+                    db.prepare("INSERT INTO Application(StdID, TutorID, Status) VALUES(222023321062103, 100000, 'Pending')").run();
+                    db.prepare("INSERT INTO Application(StdID, TutorID, Status) VALUES(222023321062104, 100001, 'Pending')").run();
+                    db.prepare("INSERT INTO Application(StdID, TutorID, Status) VALUES(222023321062104, 100000, 'Rejected')").run();
+
                     res.send(constructor.success({"message": "Database has been reset!"}))
                     logger.debug("Database has been reset!")
                 } catch

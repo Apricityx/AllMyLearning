@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {h, reactive, ref} from "vue";
+import {h, reactive, ref, defineEmits} from "vue";
 import LoginForm from "@/component/Login/LoginForm.vue";
 import {ComponentSize, ElMessage, FormInstance,} from 'element-plus'
 import {debug} from "@/utils/debug";
@@ -8,6 +8,7 @@ import {resolve} from "path";
 import 'element-plus/dist/index.css'
 import {checkLogin} from "@/utils/checkLogin.ts";
 // 创建一个响应式变量
+const emit = defineEmits(['trigger-event']);
 
 // 定义组件大小
 const formSize = ref<ComponentSize>('default')
@@ -123,6 +124,7 @@ const onSubmit = async (Form: FormInstance) => {
                 debug("收到AccessToken数据：" + JSON.stringify(data))
                 if (data['status'] === 'success') {
                     debug('登录成功')
+                    emit('trigger-event');
                     ElMessage({
                         message: `欢迎，${data.name}`,
                         type: 'success',
@@ -170,7 +172,6 @@ const onSubmit = async (Form: FormInstance) => {
                 <el-radio value="Tutor">导师</el-radio>
             </el-radio-group>
         </el-form-item>
-
         <el-form-item label="记住密码">
             <el-switch v-model="form.remember"/>
         </el-form-item>

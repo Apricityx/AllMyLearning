@@ -150,26 +150,16 @@
   "message": "Tutor Get Info Successfully",
   "stdRequests": [
     {
-      "id": 1,
-      "stdId": 1,
-      "status": "pending | accepted | rejected",
-      "stdInfo": {
-        "name": "张三",
-        "email": "123@456.com",
-        "phone": "12345678901",
-        "introduction": "我是张三"
-      }
+      "StdId": 1,
+      "Status": "pending | accepted | rejected",
+      "name": "张三",
+      "introduction": "我是张三"
     },
     {
-      "id": 2,
-      "stdId": 2,
+      "stdId": 222023321062100,
       "status": "pending | accepted | rejected",
-      "stdInfo": {
-        "name": "李四",
-        "email": "321@654.com",
-        "phone": "98765432101",
-        "introduction": "我是李四"
-      }
+      "name": "李四",
+      "introduction": "我是李四"
     }
   ],
   "selfInfo": {

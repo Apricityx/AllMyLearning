@@ -43,6 +43,9 @@ api.post('/', (req: Request, res: Response) => {
     if (requestType === "Std") {
         logger.debug("Request Type: Std" + " StdID: " + UserID)
         res.send(constructor.success(std_get_info(UserID)))
+    }else {
+        logger.debug("Request Type: Tutor" + " TutorID: " + UserID)
+        res.send(constructor.success(tutor_get_info(UserID)))
     }
 
 })

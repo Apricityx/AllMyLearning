@@ -5,6 +5,7 @@ import InfoContainer from "@/component/StdPage/InfoContainer.vue";
 import {onMounted, ref} from "vue";
 import StdAside from "@/component/StdPage/StdAside.vue";
 import {checkLogin} from "@/utils/checkLogin.ts";
+import {Refresh} from "@element-plus/icons-vue";
 
 const temp_data = ref<string>('');
 const get_info = () => {
@@ -40,15 +41,14 @@ onMounted(() => {
 
 <template>
     <el-container>
-        <el-aside width="200px" style="border-right: 2px solid #a8a8a8;background-color:var(--el-color-info-dark-2)">
+        <el-aside width="300px" style="border-right: 2px solid #a8a8a8;background-color:var(--el-color-primary-light-9)">
             <div>
                 <StdAside :http-result="temp_data"/>
             </div>
         </el-aside>
         <el-container>
             <el-header>
-                <el-button type="primary" @click="get_info" style="position: absolute;bottom: 10px;left: 10px;">刷新
-                </el-button>
+                <el-button type="primary" @click="get_info" style="position: absolute;bottom: 10px;left: 10px;" plain><el-icon style="margin-right: 5px"><Refresh /></el-icon>刷新</el-button>
             </el-header>
             <el-main style="background: var(--el-color-info-light-8)">
                 <div style="box-shadow: black 0 0 5px;padding: 10px">
@@ -63,7 +63,8 @@ onMounted(() => {
 /* 使 el-main 独立滚动 */
 .el-main {
     height: calc(100vh - 60px); /* Adjust 64px based on your header/footer height */
-    overflow-y: auto;
+    /*overflow-y: auto;*/
+    overflow: hidden;
 }
 
 .el-header {

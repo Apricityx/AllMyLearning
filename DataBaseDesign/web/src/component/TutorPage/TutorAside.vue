@@ -26,8 +26,8 @@ watch(
     (newVal) => {
         if (newVal) {
             info.value = JSON.parse(props.httpResult);
-            introduction.value = info.value.selfInfo.introduction;
-            greeting.value = time_info + '，' + info.value.selfInfo.name;
+            introduction.value = info.value.selfInfo.TutorInfo;
+            greeting.value = time_info + '，' + info.value.selfInfo.TutorName;
         }
     },
     {immediate: true}
@@ -77,8 +77,7 @@ const logout = () => {
 
     <el-button @click="dialogVisible = true" type="danger"
                style="position: absolute; bottom: 10px; left: 60px; width: 180px; margin: auto;">
-        <div
-            style="margin:auto;display: flex;flex-direction: row;justify-content: space-between;align-items: flex-start">
+        <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: flex-start">
             <el-icon>
                 <SwitchButton/>
             </el-icon>
