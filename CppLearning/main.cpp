@@ -6,9 +6,78 @@
 #include <fstream>
 #include <map>
 #include <utility>
+#include <vector>
+#include <list>
+
+void mySort(int *arg, int length) {
+    for (int i = 0; i < length - 1; i++) {
+        for (int j = 0; j < length - i - 1; j++) {
+            if (arg[j] > arg[j + 1]) {
+                swap(arg[j], arg[j + 1]);
+            }
+        }
+    }
+}
+
+// 模板类与继承
+template<typename T>
+class TemplateClass {
+
+};
+
+class DerivedClass : public TemplateClass<int> {
+
+};
+
+// 枚举类型
+enum Color {
+    color_red,
+    color_green,
+    color_blue,
+};
+
+// 按引用传递指针
+void nullify(int *&arg) {
+    arg = nullptr;
+}
+// 指针有*的时候代表改变指针指向的对象的值，没有*的时候代表改变指针的值
+// 引用传递实践
+
+void refTest(int &arg) { //此处的&代表不再拷贝一个值进入函数进行处理，而是引用原来的值，更改这个参数会导致原来的值同样被更改
+    arg += 1;
+}
+// 一般来说，当我们不想修改实参的值的时候，可以用const引用
+
+
+
+void refTestConst(const int &arg) {
+//    arg +=1; no
+    cout << "传参为" << arg << endl;
+}
+
+// 采用按地址传递的函数实现可选参数
+void greeting(std::string *arg = nullptr) {
+    cout << "HELLO, " << (arg ? *arg : "Undefined") << "!" << endl;
+}
+
+template<typename Type1>
+Type1 templateTest(Type1 arg) {
+    cout << "The type of arg is " << typeid(arg).name() << endl;
+    return arg;
+}
+
+
+void incrementAndPrint() {
+    // 静态变量实验
+    static int inc = 1;
+    cout << ++inc;
+}
+
+extern double pai; // extern关键字声明为占位符
 
 int add(int a, int b); // 向前声明，声明有这么个函数但是不给出具体实现，在后续的代码中再对其进行补充
 int gVar = 5;
+
 namespace space {
     int a = 1;
 }
@@ -17,8 +86,22 @@ int getGlobalVar() {
     return gVar;
 }
 
+// C++模板
+// 模板函数
+template<typename T>
+int templateFunction(T arg) {
+    cout << typeid(T).name() << endl;
+    return 1;
+}
+
+
+// 模板类
+template<class type>
+class templateClass {
+};
+
 using namespace std; // 这一行的意思是使用std命名空间下的所有标识符
-//form CSDN: 这样命名空间std内定义的所有标识符都有效（曝光）。就好像它们被声明为全局变量一样
+//from CSDN: 这样命名空间std内定义的所有标识符都有效（曝光）。就好像它们被声明为全局变量一样
 class throwError : public exception {
 public:
     string content = "Undefined";
@@ -134,11 +217,11 @@ int main() {
     // 写指针向前移动一位
     file_write.seekp(-1, ios::end);
     file_write << '1';
-//    char last_word = file_content[file_content.length() - 2];
-//    int file_content_int = last_word - '0';
-//    int file_content_int = 0;
-//    cout << "写入的内容为" << file_content_int + 1 << endl;
-//    file_write << file_content_int + 1;
+    //    char last_word = file_content[file_content.length() - 2];
+    //    int file_content_int = last_word - '0';
+    //    int file_content_int = 0;
+    //    cout << "写入的内容为" << file_content_int + 1 << endl;
+    //    file_write << file_content_int + 1;
     file_write.close();
     //定义类
     Clock clock{};
@@ -181,28 +264,120 @@ int main() {
     cout << "这些文字不会被输出到控制台" << endl;
 #endif
     signed int signed_int = 1;
-// 静态类型转换
-//    signed int 和 int 是一样的
-//    add(1, static_cast<int>(2.2));
-//    int static_cast_int = static_cast<int>(2.2);
-// constexpr关键字
-//    constexpr int constexpr_int{1};
-//    string get_line_var = "";
-//    getline(cin >> ws, get_line_var);
-// ws是一个流控制符，表示忽略前面的空白符，直到遇到第一个非空白符为止
-//    cout << "输入的内容为" << get_line_var << endl; 
-// 只读的访问方式
+    // 静态类型转换
+    //    signed int 和 int 是一样的
+    //    add(1, static_cast<int>(2.2));
+    //    int static_cast_int = static_cast<int>(2.2);
+    // constexpr关键字，编译时常量，这个值不是在程序运行中途决定的
+    //    constexpr int constexpr_int{1};
+    //    string get_line_var = "";
+    //    getline(cin >> ws, get_line_var);
+    // ws是一个流控制符，表示忽略前面的空白符，直到遇到第一个非空白符为止
+    //    cout << "输入的内容为" << get_line_var << endl;
+    // 只读的访问方式
     string_view read_only_string_var = "1234";
     cout << read_only_string_var << endl;
     read_only_string_var = "1223";
     cout << read_only_string_var << endl;
     // space命名空间
     cout << space::a << endl;
-    cout << &getGlobalVar;
+    cout << &getGlobalVar << endl;
+    templateFunction(1.1);
+    // STL容器
+    // 顺序容器
+    // vector容器
+    vector<int> vec;
+    vec.push_back(1);
+    cout << vec[0] << endl;
+    // vector容器只支持从前面插入
+
+    //deque容器
+    deque<int> deq = {1, 2, 3, 4, 5};
+    deq.push_back(6);
+    deq.push_front(0);
+    for (int deq_i = 0; deq_i < 7; deq_i++) {
+        cout << deq[deq_i];
+    }
+    cout << endl;
+    //deque容器支持双向插入
+
+    //尝试迭代器访问deque
+    deque<int>::iterator it;
+    it = deq.begin();
+    int counter = 5;
+    while (it != deq.end()) {
+        *it = counter;
+        counter++;
+        ++it;
+    }
+    it = deq.begin();
+    while (it != deq.end()) {
+        cout << *it << endl;
+        ++it;
+    }
+    // 字典容器
+    map<int, string> cMap;
+    cMap.insert(make_pair(1, "123123"));
+    auto it2 = cMap.cbegin();
+    while (it2 != cMap.cend()) {
+        if (it2->first == 1) {
+            cout << "it2中1对应的元素为" << it2->second << endl;
+        }
+        ++it2; // 使用 ++i 可以更明确地表示“我们不关心操作符的返回值，只关心它的副作用（即增加变量的值），尤其是i为一个对象的时候
+    }
+    incrementAndPrint();
+    incrementAndPrint();
+    incrementAndPrint(); // static变量只能在相应代码块中被访问，外边访问不到，在代码块结束后static变量仍然会保留
+    // 除非变量永远不需要被重置，否则要避免使用静态局部变量
+    cout << endl;
+    cout << pai << endl;
+    templateTest(2.0);
+    int lvalue = 1;
+    const int &refLvalue = lvalue;
+    cout << refLvalue << endl;
+    lvalue = 2;
+    cout << refLvalue << endl;
+    // 可变变量 Const引用
+    refTest(lvalue);
+    cout << lvalue << endl;
+    refTestConst(lvalue);
+    // 可见，传递引用会直接修改此参数的值
+
+    // const指针
+    const int constTest1 = 1;
+    const int constTest2 = 2;
+    int constTest3 = 3;
+    const int *constPtrTest = &constTest1;
+    int *NormalPtrTest{};
+    cout << *constPtrTest << endl;
+    constPtrTest = &constTest2;
+    cout << *constPtrTest << endl;
+    constPtrTest = &constTest3;
+//    *constPtrTest = 4; Not Allowed
+    NormalPtrTest = &constTest3;
+    *NormalPtrTest += 1; // Allowed
+    cout << *NormalPtrTest << endl;
+    string greetingName{"Alex"};
+    greeting(&greetingName);
+    // 事实上，用函数重载会比较好
+    nullify(NormalPtrTest);
+    cout << NormalPtrTest << endl;
+    cout << time_now;
+    // STL排序
+    int sortingArr[]{3, 4, 5, 1, 3, 5, 6, 2, 5, 7, 3, 2, 4};
+    int *pointerToArr = sortingArr;
+    mySort(sortingArr, 13);
+    for (i = 0; i < 13; i++) {
+        cout << pointerToArr[i] << ' ';
+    }
+    cout << endl;
+    // 动态数组
+
+    return 0;
 }
 
 
 // 向前声明
-int add(int a, int b) {
+int add(const int a, const int b) {
     return a + b;
 }
