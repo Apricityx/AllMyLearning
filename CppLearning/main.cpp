@@ -8,6 +8,66 @@
 #include <utility>
 #include <vector>
 #include <list>
+#include <algorithm>
+// 虚函数
+
+class Animals {
+public:
+    virtual void speak() { cout << "I don't know who I am...I just an animal....." << endl; };
+
+    void get_info() {
+        cout << "Speed:" << this->speed << "Age:" << this->age << endl;
+    }
+
+protected:
+    int age{};
+    int speed{};
+};
+
+class Dog : public Animals {
+public:
+    Dog() {
+        this->age = 10;
+        this->speed = 20;
+    }
+
+    void speak() override {
+        cout << "I'm barking!" << endl;
+    }
+
+protected:
+    string name = "Dog";
+};
+
+class Cat : public Animals {
+public:
+    Cat() {
+        this->age = 6;
+        this->speed = 10;
+    }
+
+    void speak() override {
+        cout << "I'm meow....." << endl;
+    }
+};
+
+class Storage {
+private:
+    int num;
+public:
+    friend void reset(Storage &ref) {
+        ref.num = 0;
+    }
+
+    void print_num() const {
+        cout << this->num << endl;
+    };
+
+    void set(int n) {
+        this->num = n;
+    }
+};
+
 
 void mySort(int *arg, int length) {
     for (int i = 0; i < length - 1; i++) {
@@ -366,12 +426,33 @@ int main() {
     // STL排序
     int sortingArr[]{3, 4, 5, 1, 3, 5, 6, 2, 5, 7, 3, 2, 4};
     int *pointerToArr = sortingArr;
-    mySort(sortingArr, 13);
-    for (i = 0; i < 13; i++) {
-        cout << pointerToArr[i] << ' ';
+    sort(begin(sortingArr), end(sortingArr));
+//    mySort(sortingArr, 13);
+    for (int const num: sortingArr) {
+        cout << num << ' ';
     }
     cout << endl;
     // 动态数组
+    int *dynamicPointer = new int;
+    *dynamicPointer = 114514;
+    cout << *dynamicPointer << endl;
+    delete dynamicPointer;
+//    cout << *dynamicPointer << endl;
+
+    Storage storage1{};
+    storage1.set(1);
+    storage1.print_num();
+    reset(storage1); // reset函数只接收一个Storage类参数
+    storage1.print_num();
+
+    Animals *objectPointer = new Dog; // 若是纯虚函数，则不能被实例化
+    objectPointer->speak();
+    objectPointer->get_info();
+    delete objectPointer;
+    objectPointer = new Cat;
+    objectPointer->speak();
+    objectPointer->get_info();
+    delete objectPointer;
 
     return 0;
 }

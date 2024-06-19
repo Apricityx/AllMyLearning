@@ -8,10 +8,10 @@
 # ifndef CPPLEARNING_CLOCK_H
 #define CPPLEARNING_CLOCK_H
 using namespace std;
-
+// 虚函数与派生
 class Clock {
 public:
-    //用lamda表达式
+    //用lambda表达式
     string time_now = [this] {
         this->set_time();
         return this->get_time();
