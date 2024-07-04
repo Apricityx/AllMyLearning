@@ -1,0 +1,88 @@
+{
+  "easycom": {
+    "autoscan": true,
+    // 注意一定要放在custom里，否则无效，https://ask.dcloud.net.cn/question/131175
+    "custom": {
+      "^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
+      "^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",
+      "^u-([^-].*)": "uview-plus/components/u-$1/u-$1.vue"
+    }
+  },
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+
+    {
+      "path": "pages/PicView",
+      "style": {
+        "navigationBarTitleText": "Pic",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/AboutMe",
+      "style": {
+        "navigationBarTitleText": "AboutMe",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/Learning1/Learning1",
+      "style": {
+        "navigationBarTitleText": "Learning1",
+        "enablePullDownRefresh": true
+      }
+    }
+  ],
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "height": "50px",
+    "fontSize": "10px",
+    "iconWidth": "24px",
+    "spacing": "3px",
+//    "iconfontSrc": "static/iconfont.ttf",
+    // app tabbar 字体.ttf文件路径 app 3.4.4+
+    "list": [
+      {
+        "pagePath": "pages/PicView",
+        "iconPath": "static/img/GrassDefault.png",
+        "selectedIconPath": "static/img/GrassSelected.png",
+        "text": "Pic"
+//        "iconfont": {
+//          // 优先级高于 iconPath，该属性依赖 tabbar 根节点的 iconfontSrc
+//          "text": "\ue102",
+//          "selectedText": "\ue103",
+//          "fontSize": "17px",
+//          "color": "#000000",
+//          "selectedColor": "#0000ff"
+//        }
+      },
+      {
+        "pagePath": "pages/AboutMe",
+        "iconPath": "static/img/AboutMeDefault.png",
+        "selectedIconPath": "static/img/AboutMeSelected.png",
+        "text": "AboutMe"
+      }
+    ],
+        "midButton": {
+          "height": "60px",
+          "iconWidth": "70px",
+          "iconPath": "static/img/+.png"
+//          "backgroundImage": "static/image/midButton_backgroundImage.png"
+        }
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
+}
