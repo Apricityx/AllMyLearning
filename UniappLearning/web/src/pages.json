@@ -75,7 +75,7 @@
         "midButton": {
           "height": "60px",
           "iconWidth": "70px",
-          "iconPath": "static/img/+.png"
+          "iconPath": "/static/img/+.png"
 //          "backgroundImage": "static/image/midButton_backgroundImage.png"
         }
   },

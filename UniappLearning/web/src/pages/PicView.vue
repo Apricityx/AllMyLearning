@@ -34,7 +34,17 @@ const nextPic = () => {
             <!--            <v-btn>下一张</v-btn>-->
         </div>
     </view>
-    <div class="NextButton" @click="nextPic()">
+    <div id="NextButton" @click="nextPic()">
+        <v-fab icon="$vuetify" width="50" height="50">
+            <v-icon icon="mdi-skip-next-outline"></v-icon>
+            <v-progress-circular
+                color="grey-lighten-4"
+                indeterminate
+                style="display: none"
+            ></v-progress-circular>
+        </v-fab>
+    </div>
+    <div id="MoreButton">
         <v-fab icon="$vuetify" width="50" height="50">
             <v-icon icon="mdi-skip-next-outline"></v-icon>
             <v-progress-circular
@@ -48,12 +58,22 @@ const nextPic = () => {
 
 
 <style scoped lang="scss">
-.NextButton {
+#NextButton {
     width: 50px;
     height: 50px;
     position: fixed;
     bottom: 10%;
     right: 5%;
+    //left: 50%;
+    //transform: translateX(-50%);
+}
+
+#MoreButton {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 10%;
+    left:  5%;
     //left: 50%;
     //transform: translateX(-50%);
 }
