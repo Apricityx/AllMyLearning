@@ -1,6 +1,6 @@
 # 计算机组成原理 - 第一课
 
-![image.png](image.png)
+![image.png](../images/image.png)
 
 ## 程序计数器
 
@@ -14,14 +14,14 @@
 ## 内存储器
 
 存放机器码
-![image_1.png](image_1.png)
+![image_1.png](../images/image_1.png)
 ### RAM
 被CPU随机进行读写的存储器，随机存储的优点是无论存储到哪儿，所用时间都是一样的
 ### ROM
 只读存储器，只能读取不能写入，用于存放程序和数据
 
 ## CPU
-![image_2.png](image_2.png)
+![image_2.png](../images/image_2.png)
 控制器和运算器两部分组成
 
 ### 运算器
