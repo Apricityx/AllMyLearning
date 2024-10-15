@@ -134,3 +134,5 @@ public:
             tempLinked.push_front(tempPtr->item);
 
         // Copy tempLinked to Linked container, in reverse order.
+    }
+};
