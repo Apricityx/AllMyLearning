@@ -1,4 +1,0 @@
-/media/apricityx/Data1/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/CppLearning.dir
-/media/apricityx/Data1/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/HELLO.dir
-/media/apricityx/Data1/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/edit_cache.dir
-/media/apricityx/Data1/Desktop/Learning/CppLearning/cmake-build-debug/CMakeFiles/rebuild_cache.dir
