@@ -7,9 +7,9 @@ class Employee
 {
 	private:
 		std::string name;
-		double grossPay;
 
 	public:
+	double grossPay;
 
 		// Postcondition: this employee's name has been set to ""
 		//                and gross pay to 0.00.

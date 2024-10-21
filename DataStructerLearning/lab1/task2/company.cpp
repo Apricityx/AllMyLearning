@@ -10,24 +10,44 @@ void Company::inputEmployee() {
         emp.input();
         if (emp.getName() == "*") {
             break;
-        } else {
-            empContainer.addHead(emp);
+        }
+        empContainer.pushFromEnd(emp);
+    }
+}
+
+Employee *Company::findBestPaidReverse() {
+    double maxSalary = 0;
+    int counter = 0; // 计数器，计算经过多少次查找
+    int final_counter = 0; // 计数器最终结果
+    Employee *bestPaidEmployee = nullptr;
+    // 使用迭代器从尾部向头部遍历
+    for (auto it = empContainer.end(); it != --empContainer.begin(); --it) {
+        // 移动到上一个员工
+        counter++;
+        if ((*it).grossPay > maxSalary) {
+            maxSalary = (*it).grossPay;
+            bestPaidEmployee = &(*it);
+            final_counter = counter;
         }
     }
+    this->bestPaid = *bestPaidEmployee;
+    cout << "经过" << final_counter << "次查找" << endl;
+    return bestPaidEmployee; // 返回收入最高的员工
 }
 
 void Company::findBestPaid() {
     //Task 2: please implement this!
-    if (empContainer.getSize() == 0) {
-        return;
-    }
-    bestPaid = *empContainer.Begin();
-    for (ListCont<Employee>::Iterator it = empContainer.Begin(); !(it == empContainer.End()); it++) {
+    int counter = 0; // 计数器，计算经过多少次查找
+    int final_counter = 0; // 计数器最终结果
+    bestPaid = *empContainer.begin();
+    for (auto it = empContainer.begin(); it != ++empContainer.end(); ++it) {
+        counter++;
         if ((*it) > bestPaid) {
             bestPaid = *it;
+            final_counter = counter;
         }
     }
-    bestPaid.output();
+    cout << "经过" << final_counter << "次查找" << endl;
 }
 
 void Company::printBestPaid() const {

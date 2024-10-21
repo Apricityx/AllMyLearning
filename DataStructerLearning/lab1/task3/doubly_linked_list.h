@@ -44,6 +44,8 @@ public:
     public:
         Iterator operator++();
 
+        typename DoublyLinkedList<T>::Iterator operator--(int);
+
         Iterator operator--();
 
         bool operator==(const Iterator &obj) const;
@@ -51,6 +53,8 @@ public:
         bool operator!=(const Iterator &obj) const;
 
         T &operator*() const;
+
+        typename DoublyLinkedList<T>::Iterator operator++(int);
     };
 
     Iterator begin() const;
@@ -111,9 +115,6 @@ void DoublyLinkedList<T>::pushFromBegin(const T &item) {
 
 template<typename T>
 void DoublyLinkedList<T>::pushFromEnd(const T &item) {
-    // 将前一个的next设为newNode
-    // 将newNode的prev设置为前一个
-    // 将newNode的next设置为空
     if (head == nullptr) {
         this->init(item);
         return;
@@ -121,8 +122,6 @@ void DoublyLinkedList<T>::pushFromEnd(const T &item) {
     Node *newNode = new Node{nullptr, tail, item};
     tail->next = newNode;
     tail = newNode;
-    // std::cout << "检查prev.next和this是否一致" << std::endl;
-    // std::cout << this << "|" << this->tail->prev->next << std::endl;
 }
 
 template<typename T>
@@ -142,17 +141,29 @@ T &DoublyLinkedList<T>::Iterator::operator*() const {
 }
 
 template<typename T>
-typename DoublyLinkedList<T>::Iterator DoublyLinkedList<T>::Iterator::operator++() {
+typename DoublyLinkedList<T>::Iterator DoublyLinkedList<T>::Iterator::operator++(int) {
     Iterator temp = *this;
     (*this).nodePtr = (*nodePtr).next;
     return temp;
 }
 
 template<typename T>
-typename DoublyLinkedList<T>::Iterator DoublyLinkedList<T>::Iterator::operator--() {
+typename DoublyLinkedList<T>::Iterator DoublyLinkedList<T>::Iterator::operator++() {
+    (*this).nodePtr = (*nodePtr).next;
+    return *this;
+}
+
+template<typename T>
+typename DoublyLinkedList<T>::Iterator DoublyLinkedList<T>::Iterator::operator--(int) {
     Iterator temp = *this;
     (*this).nodePtr = (*nodePtr).prev;
     return temp;
+}
+
+template<typename T>
+typename DoublyLinkedList<T>::Iterator DoublyLinkedList<T>::Iterator::operator--() {
+    (*this).nodePtr = (*nodePtr).prev;
+    return *this;
 }
 
 template<typename T>
@@ -168,16 +179,11 @@ bool DoublyLinkedList<T>::Iterator::operator!=(const Iterator &obj) const {
 // 特殊迭代器
 template<typename T>
 typename DoublyLinkedList<T>::Iterator DoublyLinkedList<T>::begin() const {
-    // std::cout << "begin初始化，通过head：" << head->item << std::endl;
     return Iterator(head);
 }
 
 template<typename T>
 typename DoublyLinkedList<T>::Iterator DoublyLinkedList<T>::end() const {
-    // std::cout << "end初始化：" << tail->item << std::endl;
-    // Node *last = new Node{nullptr, tail, tail->item};
-    // std::cout << "end_tail()" << tail->prev << std::endl;
-    // std::cout << "end_last()" << last->prev << std::endl;
     return Iterator(tail);
 }
 #endif // DOUBLY_LINKED_LIST_H
