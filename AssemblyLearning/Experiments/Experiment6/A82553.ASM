@@ -22,7 +22,7 @@ START: 	MOV DX,MY8255_MODE         ;初始化8255工作方式
        	MOV DX,MY8255_MODE         ;C口PC2置位
        	MOV AL,91H
        	OUT DX,AL
-		PUSH DSq
+		PUSH DS
 		MOV AX, 0000H
 		MOV DS, AX
 		MOV AX, OFFSET MIR7			;取中断入口地址
