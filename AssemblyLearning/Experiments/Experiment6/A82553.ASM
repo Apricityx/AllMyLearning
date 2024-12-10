@@ -1,3 +1,4 @@
+
 ;=========================================================
 ; 文件名: A82553.ASM
 ; 功能描述: 本实验使8255端口A工作在方式0并作为输出口，
@@ -16,10 +17,10 @@ STACK1 	ENDS
 CODE 	SEGMENT
         ASSUME CS:CODE
 START: 	MOV DX,MY8255_MODE         ;初始化8255工作方式
-       	MOV AL,86H                 ;工作方式1，A口输出，B口输入
+       	MOV AL,0B0H                 ;工作方式1，A口输出，B口输入
        	OUT DX,AL
        	MOV DX,MY8255_MODE         ;C口PC2置位
-       	MOV AL,05H                 
+       	MOV AL,91H
        	OUT DX,AL
 		PUSH DS
 		MOV AX, 0000H
@@ -43,13 +44,13 @@ START: 	MOV DX,MY8255_MODE         ;初始化8255工作方式
 		OUT 21H, AL				;ICW4
 		MOV AL, 6FH				;OCW1
 		OUT 21H, AL
-		STI       
+		STI
 AA1:	NOP
 		JMP AA1
 MIR7:  	PUSH AX
-       	MOV DX,MY8255_B            ;读B口
+       	MOV DX,MY8255_A            ;读A口
        	IN  AL,DX
-       	MOV DX,MY8255_A            ;写A口
+       	MOV DX,MY8255_A            ;写B口
        	OUT DX,AL
 	   	MOV AL,20H
        	OUT 20H,AL       
