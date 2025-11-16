@@ -1,0 +1,317 @@
+<!DOCTYPE html><html><head>
+      <title>实验1指导书</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\wxm\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.14\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+.markdown-preview.markdown-preview {
+  font-family: '微软雅黑';
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+@page {
+  size: 35cm 45cm;
+}
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="实验1-对象与类1">实验1 对象与类1 </h1>
+<h2 id="1-学习目标">1 学习目标 </h2>
+<p>（1）掌握类的声明、定义与使用；<br>
+（2）理解对象创建过程与访问方法；<br>
+（3）理解类成员的概念和用法；<br>
+（4）理解静态环境的概念和用法；<br>
+（5）掌握成员的访问控制方法。</p>
+<h2 id="2-验证性内容">2 验证性内容 </h2>
+<h3 id="21-类的声明与定义">2.1 类的声明与定义 </h3>
+<p>类是Java程序的基本单元，类定义了对象的基本状态和行为，状态用字段表示，行为用方法表示。</p>
+<p>学习要求：熟悉类的声明和定义，包括关键词、标识符的用法、字段和方法的声明；熟悉类图的基本表示方法。</p>
+<p>场景描述：定义一个圆形，包含一个半径字段，支持周长和面积计算。</p>
+<p>（1）类图</p>
+<p class="plantuml"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentstyletype="text/css" height="235.5px" preserveAspectRatio="none" style="width:303px;height:235px;background:#FFFFFF;" version="1.1" viewBox="0 0 303 235" width="303px" zoomAndPan="magnify"><defs></defs><g><!--class Circle--><g id="elem_Circle"><rect codeline="2" fill="#F1F1F1" height="204.0703" id="Circle" rx="3.75" ry="3.75" style="stroke:#181818;stroke-width:0.75;" width="272.4609" x="10.5" y="10.5"></rect><ellipse cx="113.521" cy="34.5" fill="#ADD1B2" rx="16.5" ry="16.5" style="stroke:#181818;stroke-width:1.5;"></ellipse><path d="M117.6694,28.3125 Q117.9038,27.9844 118.1851,27.8203 Q118.4663,27.6563 118.7944,27.6563 Q119.3569,27.6563 119.7085,28.0547 Q120.0601,28.4297 120.0601,29.3438 L120.0601,31.5234 Q120.0601,32.4375 119.7085,32.8359 Q119.3569,33.2344 118.7944,33.2344 Q118.2788,33.2344 117.9741,32.9297 Q117.6694,32.6484 117.5054,31.875 Q117.4351,31.3359 117.1538,31.0547 Q116.6616,30.4922 115.7476,30.1641 Q114.8335,29.8359 113.896,29.8359 Q112.7476,29.8359 111.7866,30.3281 Q110.8491,30.8203 110.0991,31.9453 Q109.3726,33.0703 109.3726,34.6172 L109.3726,36.2578 Q109.3726,38.1094 110.7085,39.3516 Q112.0444,40.5703 114.4351,40.5703 Q115.8413,40.5703 116.8257,40.1953 Q117.4116,39.9609 118.0444,39.3047 Q118.4429,38.9063 118.6538,38.7891 Q118.8882,38.6719 119.1929,38.6719 Q119.6851,38.6719 120.0601,39.0703 Q120.4585,39.4453 120.4585,39.9609 Q120.4585,40.4766 119.9429,41.0859 Q119.1929,41.9531 117.9976,42.4453 Q116.3804,43.125 114.4351,43.125 Q112.1616,43.125 110.3569,42.1875 Q108.8804,41.4375 107.8491,39.8438 Q106.8179,38.2266 106.8179,36.3047 L106.8179,34.5703 Q106.8179,32.5781 107.7319,30.8672 Q108.6694,29.1328 110.3101,28.2188 Q111.9507,27.2813 113.8022,27.2813 Q114.9038,27.2813 115.8647,27.5391 Q116.8491,27.7734 117.6694,28.3125 Z " fill="#000000"></path><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="53.6689" x="144.271" y="43.0928">Circle</text><line style="stroke:#181818;stroke-width:0.75;" x1="12" x2="281.4609" y1="58.5" y2="58.5"></line><rect fill="none" height="9" style="stroke:#C82930;stroke-width:1.5;" width="9" x="22.5" y="75.457"></rect><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="137.7612" x="40.5" y="86.2998">double : radius</text><line style="stroke:#181818;stroke-width:0.75;" x1="12" x2="281.4609" y1="96.9141" y2="96.9141"></line><ellipse cx="27" cy="118.3711" fill="#84BE84" rx="4.5" ry="4.5" style="stroke:#038048;stroke-width:1.5;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="136.582" x="40.5" y="124.7139">area() : double</text><ellipse cx="27" cy="144.7852" fill="#84BE84" rx="4.5" ry="4.5" style="stroke:#038048;stroke-width:1.5;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="183.2476" x="40.5" y="151.1279">perimeter() : double</text><ellipse cx="27" cy="171.1992" fill="#84BE84" rx="4.5" ry="4.5" style="stroke:#038048;stroke-width:1.5;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="233.4609" x="40.5" y="177.542">setRadius(double radius)</text><ellipse cx="27" cy="197.6133" fill="#84BE84" rx="4.5" ry="4.5" style="stroke:#038048;stroke-width:1.5;"></ellipse><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="189.1128" x="40.5" y="203.9561">getRadius() : double</text></g><!--SRC=[AqvEp4bLCDGpvKhEIImkLd3EB4e62bHpAIZeAgJaboO1ELOAHOafcQN5G35jXSIYr4GDJQ0OH18iLf1Qb9cRMf9QX2vHd5eI1DQg0JKAOf0cM38TBecagnO0]--></g></svg></p><p>（2）代码</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-double">double</span> radius<span class="token punctuation">;</span> <span class="token comment">// 半径字段，默认值为0.0</span>
+  <span class="token comment">// 面积计算</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-double">double</span> <span class="token function">area</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> radius <span class="token operator">*</span> radius<span class="token punctuation">;</span> <span class="token comment">// 当前不存在变量名歧义时，this关键词可以省略</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 周长计算</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-double">double</span> <span class="token function">perimeter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> radius <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 半径字段的访问方法</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-double">double</span> <span class="token function">getRadius</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> radius<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">setRadius</span><span class="token punctuation">(</span><span class="token keyword keyword-double">double</span> radius<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>radius <span class="token operator">=</span> radius<span class="token punctuation">;</span> <span class="token comment">// this是一种特殊参数，表示当前对象，由函数调用时传入</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="22-对象创建与访问">2.2 对象创建与访问 </h3>
+<h4 id="221-构造器">2.2.1 构造器 </h4>
+<p>对象的创建（或类的实例化）过程需要调用构造器，当没有显式定义构造器时，每个类会隐式定义一个无参构造器。如下所示：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 隐式定义的无参构造器，不需要显式地写出代码</span>
+  <span class="token comment">// public Circle() {} // 等价代码</span>
+<span class="token punctuation">}</span>
+</code></pre><p>当有特定需求时，可以自定义构造器：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 有参构造器</span>
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token keyword keyword-double">double</span> r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setRadius</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 无参构造器</span>
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 默认半径为2.0，通过this关键字调用有参构造器</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>思考：构造器的定义顺序一般根据参数数量从高到低。参数越多，说明对象创建过程需要的信息越详细，少参数构造器可以基于多参数构造器来实现，这样可以提高代码复用率，降低维护成本。</p>
+<p>通过<code>new</code>关键词和构造器来创建对象，返回对象的引用：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Circle</span> c1 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建半径为2.0的圆形，引用值赋给变量c1</span>
+    <span class="token class-name">Circle</span> c2 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">3.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建半径为3.0的圆形，引用值赋给变量c2</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h4 id="222-对象初始化器">2.2.2 对象初始化器 </h4>
+<p>对象初始化器（Object Initializer）是类中独立的一个代码块，在构造器的代码之前执行。如下代码，增加初始化器来打印一条提示语句。</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-double">double</span> radius<span class="token punctuation">;</span> <span class="token comment">// 半径字段</span>
+  <span class="token comment">// 对象初始化器</span>
+  <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"创建圆形"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 执行顺序：1</span>
+  <span class="token punctuation">}</span>  
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token keyword keyword-double">double</span> r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"半径初始化"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 执行顺序：2</span>
+    <span class="token function">setRadius</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 默认半径为2.0</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>继续采用<code>2.2.1</code>中的测试代码，运行结果如下：</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>创建圆形
+半径初始化
+创建圆形
+半径初始化
+</code></pre><h4 id="223-对象成员访问">2.2.3 对象成员访问 </h4>
+<p>对象成员主要是指没有使用<code>static</code>修饰的字段和方法。通常，创建对象后会将其引用值赋给一个变量，之后通过变量来访问对象成员。例如：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Circle</span> c1 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建圆形，将其引用赋值给变量c1</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"面积:%.2f，周长:%.2f"</span><span class="token punctuation">,</span> c1<span class="token punctuation">.</span><span class="token function">area</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> c1<span class="token punctuation">.</span><span class="token function">perimeter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 通过c1的值访问圆形成员</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>直接通过引用值访问对象成员：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"面积:%.2f"</span><span class="token punctuation">,</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">area</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 通过new关键字创建对象返回的引用值访问</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>思考：对象方法的代码存放在哪里？对象方法执行时如何获取对象引用的？</p>
+<h3 id="23-类成员">2.3 类成员 </h3>
+<p>类成员由<code>static</code>关键词修饰，也称为静态成员，包含静态变量（类成员变量）和静态方法（类成员方法）。类成员不属于具体的对象，而属于类，可以看作这类对象的共同特征。例如，当前已创建的圆形数量，可以用静态变量来表示。</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-int">int</span> numberOfCircles <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 已创建圆形的数量，初始值为0</span>
+<span class="token punctuation">}</span>
+</code></pre><p>类成员使用类名来访问，若在类的内部访问当前类的类成员，则可以省略类名。例如在对象初始化器中对圆形数量进行自加操作：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">{</span>
+    numberOfCircles<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// 每当创建一个圆形，会自加1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>创建一些圆形后，查看当前总数量：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 类方法，用于返回类变量的值</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-int">int</span> <span class="token function">getNumberOfCircles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> numberOfCircles<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-for">for</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"已创建的圆形%d个"</span><span class="token punctuation">,</span> <span class="token class-name">Circle</span><span class="token punctuation">.</span><span class="token function">getNumberOfCircles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>思考：类方法中只能访问类变量，不能访问对象变量。</p>
+<h2 id="24-静态环境">2.4 静态环境 </h2>
+<p>静态环境（Static Context）中不存在对象引用，因此不能访问对象成员。</p>
+<p>（1）静态初始化器</p>
+<p>静态初始化器（Static Initializer）是定义在类中的静态代码块，在类加载的时候执行一次。静态初始化器属于静态环境，没有指定对象引用，无法使用<code>this</code>关键词，也无法访问对象成员。如下代码所示：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-static">static</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 错误：this是无效的，无法访问对象变量radius</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>radius<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>（2）静态变量初始化器</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-double">double</span> radius<span class="token punctuation">;</span> <span class="token comment">// 半径字段</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-double">double</span> maxRadius <span class="token operator">=</span> radius<span class="token punctuation">;</span> <span class="token comment">// 错误：静态变量初始化器无法访问对象成员</span>
+<span class="token punctuation">}</span>
+</code></pre><p>（3）静态方法</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-double">double</span> radius<span class="token punctuation">;</span> <span class="token comment">// 半径字段</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-int">int</span> <span class="token function">getMaxRadius</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>radius<span class="token punctuation">;</span> <span class="token comment">// 错误：静态方法中无法访问对象成员</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="25-访问控制">2.5 访问控制 </h3>
+<p>访问修饰符包括<code>public</code>、<code>protected</code>、<code>private</code>三种类型，若不使用访问修饰符则默认为包内访问类型（<code>package</code>）。</p>
+<p>创建两个包<code>p1</code>和<code>p2</code>，在<code>p1</code>中定义类A：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-package">package</span> <span class="token namespace">oop<span class="token punctuation">.</span>exp1<span class="token punctuation">.</span>p1</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">A</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-int">int</span> publicValue<span class="token punctuation">;</span> <span class="token comment">// 公共</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-int">int</span> privateValue<span class="token punctuation">;</span> <span class="token comment">// 私有</span>
+  <span class="token keyword keyword-int">int</span> packageValue<span class="token punctuation">;</span> <span class="token comment">// 包内</span>
+<span class="token punctuation">}</span>
+</code></pre><p>在<code>p1</code>中定义Test类，尝试直接创建A类型对象并访问其成员，并观察访问控制情况。</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-package">package</span> <span class="token namespace">oop<span class="token punctuation">.</span>exp1<span class="token punctuation">.</span>p1</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">A</span> a <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-int">int</span> v1 <span class="token operator">=</span> a<span class="token punctuation">.</span>privateValue<span class="token punctuation">;</span> <span class="token comment">// 错误</span>
+    <span class="token keyword keyword-int">int</span> v2 <span class="token operator">=</span> a<span class="token punctuation">.</span>packageValue<span class="token punctuation">;</span>
+    <span class="token keyword keyword-int">int</span> v3 <span class="token operator">=</span> a<span class="token punctuation">.</span>publicValue<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>在<code>p2</code>中定义Test类，尝试直接创建A类型对象并访问其成员，并观察访问控制情况。</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-package">package</span> <span class="token namespace">oop<span class="token punctuation">.</span>exp1<span class="token punctuation">.</span>p2</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">oop<span class="token punctuation">.</span>exp1<span class="token punctuation">.</span>p1<span class="token punctuation">.</span></span><span class="token class-name">A</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">A</span> a <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-int">int</span> v1 <span class="token operator">=</span> a<span class="token punctuation">.</span>privateValue<span class="token punctuation">;</span> <span class="token comment">// 错误</span>
+    <span class="token keyword keyword-int">int</span> v2 <span class="token operator">=</span> a<span class="token punctuation">.</span>packageValue<span class="token punctuation">;</span> <span class="token comment">// 错误</span>
+    <span class="token keyword keyword-int">int</span> v3 <span class="token operator">=</span> a<span class="token punctuation">.</span>publicValue<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>思考：如何通过访问修饰符<code>private</code>提高对象的封装性？为什么又要通过<code>public</code>类型的Getter和Setter方法来实现对象成员变量的访问？</p>
+<h2 id="3-设计性内容">3 设计性内容 </h2>
+<h3 id="31-矩形定义">3.1 矩形定义 </h3>
+<ol>
+<li>设计一个矩形类，要求如下：<br>
+（1）声明标识符为<code>Rectangle</code>的类；<br>
+（2）声明<code>double</code>类型成员变量<code>width</code>和<code>height</code>，用于表示矩形的长和宽；<br>
+（3）声明<code>double</code>类型成员变量<code>centerX</code>和<code>centerY</code>，用于表示矩形的重心坐标；<br>
+（4）声明<code>double</code>类型成员变量<code>angle</code>，用于表示长边相对<code>x轴</code>的旋转角度，例如45度角；<br>
+（5）声明4个静态常量用于表示矩形顶点的编号（0,1,2,3），包括<code>VERTEX0</code>、<code>VERTEX1</code>、<code>VERTEX2</code>、<code>VERTEX3</code>；<br>
+（6）声明和定义一个方法<code>move(double dx, double dy)</code>，用于表示将矩形在<code>x轴</code>移动<code>dx</code>长度，在<code>y轴</code>移动<code>dy</code>长度；<br>
+（7）声明和定义一个方法<code>moveTo(double x, double y)</code>，用于表示将矩形重心移动到坐标<code>(x, y)</code>；<br>
+（8）声明和定义一个方法<code>rotate(double angle)</code>，用于表示将矩形旋转一个角度<code>angle</code>。</li>
+</ol>
+<h3 id="32-旋转的矩形">3.2 旋转的矩形 </h3>
+<p>测试如下代码，观测矩形界面是否有一个旋转的矩形：</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>canvas<span class="token punctuation">.</span></span><span class="token class-name">Canvas</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>canvas<span class="token punctuation">.</span></span><span class="token class-name">GraphicsContext</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>animation<span class="token punctuation">.</span></span><span class="token class-name">KeyFrame</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>animation<span class="token punctuation">.</span></span><span class="token class-name">Timeline</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Group</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Scene</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>paint<span class="token punctuation">.</span></span><span class="token class-name">Color</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Duration</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">RectApp</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-double">double</span> i <span class="token operator">=</span> <span class="token number">0.1</span><span class="token punctuation">;</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 创建画布并设置大小</span>
+    <span class="token class-name">Canvas</span> canvas <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Canvas</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">GraphicsContext</span> gc <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getGraphicsContext2D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 创建动画，每隔16ms更新一次角度，相当于每秒约60帧</span>
+    <span class="token class-name">Rectangle</span> rect <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Timeline</span> animation <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Timeline</span><span class="token punctuation">(</span><span class="token keyword keyword-new">new</span> <span class="token class-name">KeyFrame</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">millis</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">,</span> e <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    	<span class="token function">draw</span><span class="token punctuation">(</span>gc<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    	rect<span class="token punctuation">.</span><span class="token function">rotate</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    	<span class="token comment">// 莱姆尼斯卡曲线的参数方程计算坐标</span>
+      <span class="token keyword keyword-double">double</span> x <span class="token operator">=</span> <span class="token number">200</span> <span class="token operator">+</span> <span class="token number">100</span> <span class="token operator">*</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword keyword-double">double</span> y <span class="token operator">=</span> <span class="token number">200</span> <span class="token operator">+</span> <span class="token number">100</span> <span class="token operator">*</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      rect<span class="token punctuation">.</span><span class="token function">moveTo</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      i <span class="token operator">+=</span> <span class="token number">0.01</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    animation<span class="token punctuation">.</span><span class="token function">setCycleCount</span><span class="token punctuation">(</span><span class="token class-name">Timeline</span><span class="token punctuation">.</span><span class="token constant">INDEFINITE</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 无限循环</span>
+    animation<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 开始动画</span>
+    
+    <span class="token comment">// 设置场景和舞台</span>
+    <span class="token class-name">Group</span> root <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    root<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    primaryStage<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"矩形旋转"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    primaryStage<span class="token punctuation">.</span><span class="token function">setScene</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    primaryStage<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 绘制旋转矩形</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-void">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token class-name">GraphicsContext</span> gc<span class="token punctuation">,</span> <span class="token class-name">Rectangle</span> rect<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 清空画布</span>
+    gc<span class="token punctuation">.</span><span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 保存当前状态</span>
+    gc<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将画布的原点平移到矩形中心</span>
+    gc<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span><span class="token function">getCenterX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> rect<span class="token punctuation">.</span><span class="token function">getCenterY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 旋转坐标系</span>
+    gc<span class="token punctuation">.</span><span class="token function">rotate</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span><span class="token function">getAngle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 设置矩形颜色</span>
+    gc<span class="token punctuation">.</span><span class="token function">setFill</span><span class="token punctuation">(</span><span class="token class-name">Color</span><span class="token punctuation">.</span><span class="token constant">BLUE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 绘制矩形，绘制的坐标是相对于translate后的(0,0)的</span>
+    gc<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token operator">-</span>rect<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span>rect<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> rect<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> rect<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token comment">// 恢复原始状态</span>
+    gc<span class="token punctuation">.</span><span class="token function">restore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">launch</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="4-实验要求">4 实验要求 </h2>
+<p>实验成果材料包含实验报告和源代码两部分，如下所示：</p>
+<img src="001.png">
+<p>实验报告按报告模板提示和要求填写，包含两部分内容：</p>
+<ul>
+<li>第2部分验证性内容自查；</li>
+<li>第3部分矩形类的<code>plantuml</code>类图代码。</li>
+</ul>
+<p>源代码文件夹<code>experiment1</code>中应该包含内容：</p>
+<ul>
+<li>矩形类：Rectangle.java</li>
+</ul>
+<p>实验成果上传目录：<code>FTP服务器地址/2024-2025-1/面向对象高级编程/学号/实验1</code></p>
+<h2 id="5-其他说明">5 其他说明 </h2>
+<h3 id="51-视频资料">5.1 视频资料 </h3>
+<p>暂无</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

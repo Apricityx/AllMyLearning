@@ -1,0 +1,51 @@
+{
+	"list": [{
+			"name": "home",
+			"title": "国内",
+			"type": "guonei"
+		},
+		{
+			"name": "home",
+			"title": "国际",
+			"type": "guoji"
+		},
+		{
+			"name": "home",
+			"title": "娱乐",
+			"type": "yule"
+		},
+		{
+			"name": "home",
+			"title": "体育",
+			"type": "tiyu"
+		},
+		{
+			"name": "home",
+			"title": "军事",
+			"type": "junshi"
+		},
+		{
+			"name": "home",
+			"title": "科技",
+			"type": "keji"
+		},
+		{
+			"name": "home",
+			"title": "财经",
+			"type": "caijing"
+		},
+		{
+			"name": "home",
+			"title": "游戏",
+			"type": "youxi"
+		}, {
+			"name": "home",
+			"title": "汽车",
+			"type": "qiche"
+		}, {
+			"name": "home",
+			"title": "健康",
+			"type": "jiankang"
+		}
+	]
+}

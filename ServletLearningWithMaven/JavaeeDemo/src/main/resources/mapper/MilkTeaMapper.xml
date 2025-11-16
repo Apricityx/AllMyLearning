@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.milktea.dao.MilkTeaDao">
+
+    <!-- 查询所有 -->
+    <select id="findAll" resultType="com.milktea.bean.MilkTea">
+        SELECT * FROM milktea;
+    </select>
+
+    <!-- 根据 ID 查询 -->
+    <select id="findById" resultType="com.milktea.bean.MilkTea" parameterType="int">
+        SELECT * FROM milktea WHERE id = #{id};
+    </select>
+
+    <!-- 插入 -->
+    <insert id="insert" parameterType="com.milktea.bean.MilkTea">
+        INSERT INTO milktea (name, price) VALUES (#{name}, #{price});
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="com.milktea.bean.MilkTea">
+        UPDATE milktea SET name = #{name}, price = #{price} WHERE id = #{id};
+    </update>
+
+    <!-- 删除 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM milktea WHERE id = #{id};
+    </delete>
+
+</mapper>

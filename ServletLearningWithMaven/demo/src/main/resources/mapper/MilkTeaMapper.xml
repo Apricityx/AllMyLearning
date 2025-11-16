@@ -1,0 +1,23 @@
+<mapper namespace="com.milktea.dao.MilkTeaDao">
+
+    <select id="findAll" resultType="MilkTea">
+        SELECT * FROM milktea;
+    </select>
+
+    <select id="findById" resultType="MilkTea" parameterType="int">
+        SELECT * FROM milktea WHERE id = #{id};
+    </select>
+
+    <insert id="insert" parameterType="MilkTea">
+        INSERT INTO milktea (name, price) VALUES (#{name}, #{price});
+    </insert>
+
+    <update id="update" parameterType="MilkTea">
+        UPDATE milktea SET name=#{name}, price=#{price} WHERE id=#{id};
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM milktea WHERE id=#{id};
+    </delete>
+
+</mapper>

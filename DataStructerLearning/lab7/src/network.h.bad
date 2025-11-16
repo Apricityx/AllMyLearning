@@ -1,0 +1,212 @@
+#ifndef NETWORK
+#define NETWORK
+#include <hash_map>
+#include <limits>
+#include <map>
+#include <list>
+#include <queue>
+#include <unordered_map>
+
+using namespace std;
+
+//template<class vertex, class Compare = less<vertex> >
+// vertex是顶点的类型，比如string，int等
+template<class vertex>
+class network {
+    //node in the adjacency list, a to-vetex, an associated weight
+    // 定义了一个目标顶点to和他的权重weight的一对关系
+    // 实质上是定义了一个边
+    // 此结构体用于表示到某个顶点的边的权重
+    struct vertex_weight_pair {
+        vertex to;
+        double weight;
+
+        // Postcondition: this vertex_weight_pair has been initialized
+        //                from x and y.
+        vertex_weight_pair(const vertex &x, const double &y) {
+            to = x;
+            weight = y;
+        } // two-parameter constructor
+
+        // Postcondition: true has been returned if this
+        //                vertex_weight_pair is less than x.
+        //                Otherwise, false has been returned.
+        bool operator>(const vertex_weight_pair &p) const {
+            return weight > p.weight;
+        } // operator>
+    }; // class vertex_weight_pair
+    // 将这种一对的关系存入一个链表中
+    typedef typename std::list<vertex_weight_pair> adj_list;
+    typedef typename adj_list::iterator adj_list_itr; //adjacency list iterotor
+    typedef typename std::map<vertex, adj_list> ver_adj_map; // 表示了一个顶点和他的邻接顶点的关系
+    typedef typename ver_adj_map::iterator ver_adj_map_itr;
+
+protected:
+    ver_adj_map ver_adj; // {vertex, adj_list} // 顶点和邻接顶点的关系
+
+
+public:
+    // Postcondition: this network is empty.
+    network() {
+    }
+
+    // Postcondition: the number of vertices in this network has been
+    //                returned.
+    unsigned int size() {
+        return ver_adj.size();
+    } // method size
+
+
+    // Postcondition: true has been returned if this network contains no
+    //                vertices.  Otherwise, false has been returned.
+    bool empty() {
+        return size() == 0;
+    } // method empty
+
+
+    // Postcondition: true has been returned if this network contains the
+    //                edge <v1, v2>.  Otherwise, false has been returned.
+    // 用于判断两点之间是否有边
+    bool contains_edge(const vertex &v1, const vertex &v2) {
+        ver_adj_map_itr itr = ver_adj.find(v1);
+        if (itr == ver_adj.end() || ver_adj.find(v2) == ver_adj.end()) //not both exist
+            return false;
+
+        adj_list_itr list_itr;
+
+        for (list_itr = ((*itr).second).begin(); //itr points to a pair in ver_adj_map: first:vertex, second:adj_list
+             list_itr != ((*itr).second).end();
+             list_itr++)
+            if ((*list_itr).to == v2) //vertex-weight-struct
+                return true;
+        return false;
+    } // method contains_edge
+
+
+    // Postcondition: if v is already in this network, false has been
+    //                returned. Otherwise, the map with v and an empty list
+    //                has been added to this network and true has been
+    //                returned.
+    // 添加一个顶点，这个顶点对象需要在外部创建好，然后用这个函数添加到网络中
+    // 这个顶点对象需要定义和哪些顶点有边的关系，以及这些边的权重
+    // 网络中所有的顶点都是由顶点及其邻接顶点的关系组成的
+    bool insert_vertex(const vertex &v) {
+        return ver_adj.insert(
+            pair<vertex, list<vertex_weight_pair> > // 若v已经存在，返回false，不会初始化该顶点
+            (v, list<vertex_weight_pair>()) //empty list // 将(一个顶点，一个空的邻接顶点链表)插入到网络中
+        ).second; //map insert returns pair<iterator,bool>
+    } // method insert_vertex
+
+
+    // Postcondition: if the edge <v1, v2> is already in this network false
+    //                has been returned. Otherwise, that edge with the
+    //                given weight has been inserted in this network and
+    //                true has been returned.
+    bool insert_edge(const vertex &v1, const vertex &v2, const double &weight) {
+        if (contains_edge(v1, v2))
+            return false;
+        insert_vertex(v1); //may already exist
+        insert_vertex(v2); //may already exist
+        (*ver_adj.find(v1)).second.push_back(vertex_weight_pair(v2 /* to */, weight));
+        // ver_adj.find(v1)返回的是一个pair，pair的第二个元素表示的是一个邻接顶点链表，将v2和权重插入到这个链表中
+        return true;
+    } // method insert_edge
+
+    /*=======================================DIJKSTRA'S ALGORITHM==========================================================*/
+    // Postcondition: the shortest path from v1 to v2 and its total weight
+    //                have been returned; if such a path is found,
+    //				  returns the list of vertices on the shortest path
+    //				  and the total weight of the shortest path;
+    //				  otherwise, returns an empty list and the value -1.0
+    pair<list<vertex>, double> get_shortest_path(const vertex &v1, const vertex &v2) {
+        //please implement this
+        // v1是起点，v2是终点
+        // 利用Dijkstra算法求最短路径
+        // Dijkstra的基本思想是：从起点开始，每次找到离起点最近的一个顶点，然后以这个顶点为中心，更新与这个顶点相邻的顶点的距离
+        // 初始化，将所有顶点的距离设置为无穷大，将起点的距离设置为0
+        // 维护最小堆
+        const int size = this->size();
+        // 最小堆：{当前距离, 节点编号}
+        std::priority_queue<pair<double, vertex>, vector<pair<double, vertex> >, greater<> > heap;
+        // 最短距离数组 <节点编号，距离>
+        unordered_map<vertex, double> distance;
+        // 前驱节点数组 <当前节点，前驱节点>
+        unordered_map<vertex, vertex> prev;
+        // 已经确定的节点集合
+        unordered_map<vertex, bool> S;
+        // 初始化: 将所有顶点的距离设置为无穷大，将起点的距离设置为0
+        for (auto &v: ver_adj) {
+            distance[v.first] = numeric_limits<double>::infinity();
+            S[v.first] = false;
+        }
+        distance[v1] = 0.0;
+        // 通过最短数组生成一个最小堆
+        auto update_heap = [&S,&heap,&distance]() {
+            while (!heap.empty()) {
+                heap.pop();
+            }
+            for (auto &d: distance) {
+                // 如果已经确定了，则不加入堆
+                if (S[d.first]) {
+                    continue;
+                }
+                heap.push(make_pair(d.second, d.first));
+            }
+        };
+        update_heap();
+        cout << "The start point is " << heap.top().second << endl;
+        // 更新毗邻
+        auto update_distance = [&S,&distance, &prev, this](const vertex &v) {
+            S[v] = true;
+            auto itr = ver_adj.find(v);
+            if (itr == ver_adj.end()) {
+                return;
+            }
+            auto update_list = (*itr).second;
+            for (auto &vx: update_list) {
+                // 如果新的距离小于原来的距离，则更新
+                if (distance[vx.to] > distance[v] + vx.weight) {
+                    auto debug_old_dis = distance[vx.to];
+                    distance[vx.to] = distance[v] + vx.weight;
+                    prev[vx.to] = v;
+                    std::cout << "Update distance of " << vx.to << " from " << debug_old_dis << " to " << distance[vx.
+                        to] << std::endl;
+                }
+            }
+        };
+        // 开始更新最小节点，结束条件：1. 找到终点 2. 所有节点都已经确定
+        auto vf = v1;
+        auto ve = v2;
+        while (S.size() == size || vf == ve) {
+            std::cout << "Now finding " << vf << std::endl;
+            vf = heap.top().second;
+            heap.pop();
+            update_distance(vf);
+            update_heap();
+            if (S[v2]) {
+                break;
+            }
+        }
+        // 打印所有信息
+        for (auto &d: distance) {
+            cout << "Distance of " << d.first << " is " << d.second << endl;
+        }
+        for (auto &p: prev) {
+            cout << "Prev of " << p.first << " is " << p.second << endl;
+        }
+        for (auto &s: S) {
+            cout << "S of " << s.first << " is " << s.second << endl;
+        }
+        // 生成路径
+        list<vertex> path;
+        for (auto v = v2; v != v1; v = prev[v]) {
+            std::cout << "Push " << v << std::endl;
+            path.push_front(v);
+        }
+        // 返回路径和距离
+        return make_pair(path, distance[v2]);
+        // 每次从未确定的顶点中选择距离起点最近的一个顶点，将其加入 S，并更新与其相邻顶点的最短距离。
+    } // method get_shortest_path
+}; // class network
+
+#endif
