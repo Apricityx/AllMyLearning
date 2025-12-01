@@ -18,9 +18,7 @@ pub fn run_demo() {
     }
 }
 
-use crate::instance::hanoi;
-
-/// 用于计算某一个状态需要用多少次移动才能将所有圆柱从from移动到to
+// 用于计算某一个状态需要用多少次移动才能将所有圆柱从from移动到to
 // fn hanoi(n: u32, from: char, aux: char, to: char, moves: &mut Vec<(u32, char, char)>) {
 //     if n == 0 {
 //         return;
@@ -44,4 +42,3 @@ use crate::instance::hanoi;
 //         println!("Move disk {disk} from {from} to {to}");
 //     }
 // }
-type moves = Vec<>;

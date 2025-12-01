@@ -1,0 +1,10 @@
+[package]
+name = "Task3"
+version = "0.1.0"
+edition = "2024"
+
+authors = ["Apricityx <apricityx@qq.com>"]
+description = ""
+license = "MIT"
+
+[dependencies]
