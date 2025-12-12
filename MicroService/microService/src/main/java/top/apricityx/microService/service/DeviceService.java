@@ -1,16 +1,13 @@
 package top.apricityx.microService.service;
 
-import jakarta.validation.Valid;
-import top.apricityx.microService.dto.LoginRequest;
-import top.apricityx.microService.dto.RegisterRequest;
-import top.apricityx.microService.model.User;
 import org.springframework.stereotype.Service;
-
+import top.apricityx.microService.dto.RegisterRequest;
 
 @Service
-public class UserService {
+public class DeviceService
+{
     /**
-     * 注册
+     * 查询设备
      */
     public void register(RegisterRequest request) {
         System.out.println("用户名字: " + request.getUsername());
@@ -22,18 +19,5 @@ public class UserService {
                 !request.getPassword().matches(".*\\d.*")) {
             throw new IllegalArgumentException("密码必须至少8个字符，且包含字母和数字");
         }
-    }
-
-    /**
-     * 登录
-     */
-    public User login(@Valid LoginRequest request) {
-        return User.builder()
-                .id(1L) // 虚拟ID
-                .username(request.getUsername())
-                .password(request.getPassword())
-                .email(request.getEmail())
-                .role(request.getRole())
-                .build();
     }
 }

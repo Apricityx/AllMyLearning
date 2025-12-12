@@ -15,11 +15,9 @@ public class User {
 
     private String username;
 
-    // 暂时明文存储，后面可以改成加密（作业要求没强制的话可以先简单）
     private String password;
 
     private String email;
 
-    // 角色，后面生成 JWT 要用（比如 "USER" / "ADMIN"）
     private String role;
 }
